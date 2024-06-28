@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <windows.h>
 #include <format>
-#include <filesystem>
 
 #include "shared.h"
 #include "gui.h"
@@ -18,33 +17,6 @@ void AddonOptions();
 
 /* globals */
 AddonDefinition AddonDef = {};
-
-static bool open_window = true;
-
-/*Texture* GetBossTexture(std::string boss_name)
-{
-	if (boss_name == "Vale Guardian")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_VALE_GUARDIAN", IDB_VALE_GUARDIAN, hSelf);
-	}
-	else if (boss_name == "Gorseval")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_GORSEVAL", IDB_GORSEVAL, hSelf);
-	}
-	else
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_UNDER_CONSTRUCTION", IDB_UNDER_CONSTRUCTION, hSelf);
-	}
-}
-
-void DrawMarker(Texture* marker_texture)
-{
-	if (marker_texture != nullptr)
-	{
-		ImGui::Image(marker_texture->Resource, ImVec2(24, 24));
-		ImGui::SameLine();
-	}
-}*/
 
 ///----------------------------------------------------------------------------------------------------
 /// DllMain:
