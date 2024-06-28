@@ -1,0 +1,132 @@
+#include "resource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PNG
+//
+
+IDB_ADINA               PNG                     "resources/Adina.png"
+
+IDB_BROKEN_KING         PNG                     "resources/Broken_King.png"
+
+IDB_CAIRN               PNG                     "resources/Cairn.png"
+
+IDB_CONJURED_AMALGAMATE PNG                     "resources/Conjured_Amalgamate.png"
+
+IDB_DEIMOS              PNG                     "resources/Deimos.png"
+
+IDB_DHUUM               PNG                     "resources/Dhuum.png"
+
+IDB_EATER_OF_SOULS      PNG                     "resources/Eater_Of_Souls.png"
+
+IDB_ESCORT              PNG                     "resources/Escort.png"
+
+IDB_EYES_OF_FATE        PNG                     "resources/Eyes_Of_Fate.png"
+
+IDB_GORSEVAL            PNG                     "resources/Gorseval.png"
+
+IDB_KEEP_CONSTRUCT      PNG                     "resources/Keep_Construct.png"
+
+IDB_KENUTT              PNG                     "resources/Kenutt.png"
+
+IDB_MATTHIAS            PNG                     "resources/Matthias.png"
+
+IDB_MURSAAT_OVERSEER    PNG                     "resources/Mursaat_Overseer.png"
+
+IDB_NIKARE              PNG                     "resources/Nikare.png"
+
+IDB_QADIM               PNG                     "resources/Qadim.png"
+
+IDB_QADIM_THE_PEERLESS  PNG                     "resources/Qadim_The_Peerless.png"
+
+IDB_RIVER_OF_SOULS      PNG                     "resources/River_Of_Souls.png"
+
+IDB_SABETHA             PNG                     "resources/Sabetha.png"
+
+IDB_SABIR               PNG                     "resources/Sabir.png"
+
+IDB_SAMAROG             PNG                     "resources/Samarog.png"
+
+IDB_SLOTHASOR           PNG                     "resources/Slothasor.png"
+
+IDB_SOULLESS_HORROR     PNG                     "resources/Soulless_Horror.png"
+
+IDB_TWISTED_CASTLE      PNG                     "resources/Twisted_Castle.png"
+
+IDB_VALE_GUARDIAN       PNG                     "resources/Vale_Guardian.png"
+
+IDB_XERA                PNG                     "resources/Xera.png"
+
+IDB_ARKK                PNG                     "resources/Arkk.png"
+
+IDB_ARTSARIIV           PNG                     "resources/Artsariiv.png"
+
+IDB_ELEMENTAL_AI_DARK   PNG                     "resources/Elemental_Ai_Dark.png"
+
+IDB_ELEMENTAL_AI_LIGHT  PNG                     "resources/Elemental_Ai_Light.png"
+
+IDB_ELEMENTAL_AI_LIGHT_AND_DARK PNG                     "resources/Elemental_Ai_Light_And_Dark.png"
+
+IDB_ENSOLYSS            PNG                     "resources/Ensolyss.png"
+
+IDB_KANAXAI             PNG                     "resources/Kanaxai.png"
+
+IDB_MAMA                PNG                     "resources/MAMA.png"
+
+IDB_SIAX                PNG                     "resources/Siax.png"
+
+IDB_SKORVALD            PNG                     "resources/Skorvald.png"
+
+IDB_BERG                PNG                     "resources/Berg.png"
+
+IDB_NARELLA             PNG                     "resources/Narella.png"
+
+IDB_ZANE                PNG                     "resources/Zane.png"
+
+IDB_ANKKA               PNG                     "resources/Ankka.png"
+
+IDB_BONESKINNER         PNG                     "resources/Boneskinner.png"
+
+IDB_CAPTAIN_MAI_TRIN    PNG                     "resources/Captain_Mai_Trin.png"
+
+IDB_CERUS               PNG                     "resources/Cerus.png"
+
+IDB_DAGDA               PNG                     "resources/Dagda.png"
+
+IDB_FRAENIR_OF_JORMAG   PNG                     "resources/Fraenir_Of_Jormag.png"
+
+IDB_FREEZIE             PNG                     "resources/Freezie.png"
+
+IDB_HARVEST_TEMPLE      PNG                     "resources/Harvest_Temple.png"
+
+IDB_ICEBROOD_CONSTRUCT  PNG                     "resources/Icebrood_Construct.png"
+
+IDB_KODANS              PNG                     "resources/Kodans.png"
+
+IDB_MINISTER_LI         PNG                     "resources/Minister_Li.png"
+
+IDB_WATCHKNIGHT_MARK_II PNG                     "resources/Watchknight_Mark_II.png"
+
+IDB_WHISPER_OF_JORMAG   PNG                     "resources/Whisper_of_Jormag.png"
+
+IDB_CERUS_AND_DEIMOS    PNG                     "resources/CerusAndDeimos.png"
+
+IDB_EPARCH              PNG                     "resources/Eparch.png"
+
+IDB_UNDER_CONSTRUCTION  PNG                     "resources/UnderConstruction.png"
+
+IDB_MARKER_ARROW        PNG                     "resources/Commander_arrow_marker.png"
+
+IDB_MARKER_CIRCLE       PNG                     "resources/Commander_circle_marker.png"
+
+IDB_MARKER_HEART        PNG                     "resources/Commander_heart_marker.png"
+
+IDB_MARKER_SPIRAL       PNG                     "resources/Commander_spiral_marker.png"
+
+IDB_MARKER_SQUARE       PNG                     "resources/Commander_square_marker.png"
+
+IDB_MARKER_STAR         PNG                     "resources/Commander_star_marker.png"
+
+IDB_MARKER_TRIANGLE     PNG                     "resources/Commander_triangle_marker.png"
+
+IDB_MARKER_X            PNG                     "resources/Commander_x_marker.png"
