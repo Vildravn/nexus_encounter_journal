@@ -16,6 +16,9 @@ enum SquadMarker {
 
 void ToggleShowWindowEncounterJournal(const char* keybindIdentifier, bool isRelease);
 
+void RegisterQuickAccessShortcut(void);
+void DeregisterQuickAccessShortcut(void);
+
 void RenderWindowEncounterJournal(void);
 void RenderDhuumWidget(void);
 

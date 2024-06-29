@@ -130,3 +130,7 @@ IDB_MARKER_STAR         PNG                     "resources/Commander_star_marker
 IDB_MARKER_TRIANGLE     PNG                     "resources/Commander_triangle_marker.png"
 
 IDB_MARKER_X            PNG                     "resources/Commander_x_marker.png"
+
+IDB_JOURNAL_ICON        PNG                     "resources/Journal_icon.png"
+
+IDB_JOURNAL_ICON_HOVER  PNG                     "resources/Journal_icon_hover.png"

@@ -61,3 +61,5 @@
 #define IDB_MARKER_STAR                 165
 #define IDB_MARKER_TRIANGLE             166
 #define IDB_MARKER_X                    167
+#define IDB_JOURNAL_ICON                168
+#define IDB_JOURNAL_ICON_HOVER          169

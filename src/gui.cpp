@@ -22,6 +22,14 @@ void ToggleShowWindowEncounterJournal(const char* keybindIdentifier, bool isRele
     ShowWindowEncounterJournal = !ShowWindowEncounterJournal;
 }
 
+void RegisterQuickAccessShortcut() {
+	APIDefs->AddShortcut("SHORTCUT_ENCOUNTER_JOURNAL", "TEX_JOURNAL_ICON", "TEX_JOURNAL_ICON_HOVER", KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL, "Encounter Journal");
+}
+
+void DeregisterQuickAccessShortcut() {
+	APIDefs->RemoveShortcut("SHORTCUT_ENCOUNTER_JOURNAL");
+}
+
 void RenderWindowEncounterJournal()
 {
     if (!ShowWindowEncounterJournal) return;

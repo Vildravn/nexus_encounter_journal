@@ -5,6 +5,7 @@
 
 #include "shared.h"
 #include "gui.h"
+#include "resource.h"
 
 #include "nexus/Nexus.h"
 #include "imgui/imgui.h"
@@ -75,7 +76,10 @@ void AddonLoad(AddonAPI* aApi)
 
 	NexusLink = (NexusLinkData*)APIDefs->GetResource("DL_NEXUS_LINK");
 
+	APIDefs->GetTextureOrCreateFromResource("TEX_JOURNAL_ICON", IDB_JOURNAL_ICON, hSelf);
+	APIDefs->GetTextureOrCreateFromResource("TEX_JOURNAL_ICON_HOVER", IDB_JOURNAL_ICON_HOVER, hSelf);
 	APIDefs->RegisterKeybindWithString(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL, ToggleShowWindowEncounterJournal, "CTRL+J");
+	RegisterQuickAccessShortcut();
 
 	// Add an options window and a regular render callback
 	APIDefs->RegisterRender(ERenderType_Render, AddonRender);
@@ -94,6 +98,7 @@ void AddonUnload()
 	APIDefs->DeregisterRender(AddonRender);
 	APIDefs->DeregisterRender(AddonOptions);
 
+	DeregisterQuickAccessShortcut();
 	APIDefs->DeregisterKeybind(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL);
 
 	APIDefs->Log(ELogLevel_DEBUG, ADDON_NAME, "<c=#ff0000>Signing off</c>, it was an honor commander.");
