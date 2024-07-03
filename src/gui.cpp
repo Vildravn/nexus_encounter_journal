@@ -14,12 +14,45 @@ json::json_pointer selected_pointer;
 std::string selected_boss_name;
 
 bool ShowWindowEncounterJournal = false;
+bool ShowWindowEncounterWidget = false;
+bool LockWindowEncounterWidget = true;
+
+ImGuiWindowFlags WidgetFlagsLocked = 
+	ImGuiWindowFlags_NoCollapse + 
+	ImGuiWindowFlags_NoScrollbar + 
+	ImGuiWindowFlags_NoScrollWithMouse + 
+	ImGuiWindowFlags_NoBackground + 
+	ImGuiWindowFlags_AlwaysAutoResize + 
+	ImGuiWindowFlags_NoTitleBar +
+	ImGuiWindowFlags_NoMove +
+	ImGuiWindowFlags_NoInputs;
+
+ImGuiWindowFlags WidgetFlagsUnlocked = 
+	ImGuiWindowFlags_NoCollapse + 
+	ImGuiWindowFlags_NoScrollbar + 
+	ImGuiWindowFlags_NoScrollWithMouse + 
+	ImGuiWindowFlags_AlwaysAutoResize + 
+	ImGuiWindowFlags_NoTitleBar;
 
 void ToggleShowWindowEncounterJournal(const char* keybindIdentifier, bool isRelease)
 {
     if (isRelease) return;
     APIDefs->Log(ELogLevel_DEBUG, ADDON_NAME, std::format("Keybind {} was pressed.", keybindIdentifier).c_str());
     ShowWindowEncounterJournal = !ShowWindowEncounterJournal;
+}
+
+void ToggleShowWindowEncounterWidget(const char* keybindIdentifier, bool isRelease)
+{
+    if (isRelease) return;
+    APIDefs->Log(ELogLevel_DEBUG, ADDON_NAME, std::format("Keybind {} was pressed.", keybindIdentifier).c_str());
+    ShowWindowEncounterWidget = !ShowWindowEncounterWidget;
+}
+
+void ToggleLockWindowEncounterWidget(const char* keybindIdentifier, bool isRelease)
+{
+    if (isRelease) return;
+    APIDefs->Log(ELogLevel_DEBUG, ADDON_NAME, std::format("Keybind {} was pressed.", keybindIdentifier).c_str());
+    LockWindowEncounterWidget = !LockWindowEncounterWidget;
 }
 
 void RegisterQuickAccessShortcut() {
@@ -163,10 +196,25 @@ void RenderWindowEncounterJournal()
 
 void RenderDhuumWidget()
 {
+	if (!ShowWindowEncounterWidget) return;
+
     // Dhuum widget prototype
     ImGui::PushFont((ImFont*)NexusLink->FontUI);
-	if (ImGui::Begin("Boss widget", NULL, ImGuiWindowFlags_NoCollapse + ImGuiWindowFlags_NoScrollbar + ImGuiWindowFlags_NoScrollWithMouse + ImGuiWindowFlags_NoBackground + ImGuiWindowFlags_AlwaysAutoResize + ImGuiWindowFlags_NoTitleBar))
+
+	ImGuiWindowFlags widgetFlags = WidgetFlagsLocked;
+	if (!LockWindowEncounterWidget) widgetFlags = WidgetFlagsUnlocked;
+
+
+	if (ImGui::Begin("Boss widget", NULL, widgetFlags))
 	{
+		if (!LockWindowEncounterWidget)
+		{
+			if (ImGui::BeginCombo("##widgetCombo", "Dhuum"))
+			{
+				ImGui::Selectable("Sabetha");
+				ImGui::EndCombo();
+			}
+		}
 		if (ImGui::BeginTable("Dhuum Table", 3))
 		{
 			ImGui::TableSetupColumn("G1");

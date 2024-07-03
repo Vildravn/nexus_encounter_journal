@@ -79,6 +79,8 @@ void AddonLoad(AddonAPI* aApi)
 	APIDefs->GetTextureOrCreateFromResource("TEX_JOURNAL_ICON", IDB_JOURNAL_ICON, hSelf);
 	APIDefs->GetTextureOrCreateFromResource("TEX_JOURNAL_ICON_HOVER", IDB_JOURNAL_ICON_HOVER, hSelf);
 	APIDefs->RegisterKeybindWithString(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL, ToggleShowWindowEncounterJournal, "CTRL+J");
+	APIDefs->RegisterKeybindWithString(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_WIDGET, ToggleShowWindowEncounterWidget, "CTRL+SHIFT+J");
+	APIDefs->RegisterKeybindWithString(KB_TOGGLE_LOCK_WINDOW_ENCOUNTER_WIDGET, ToggleLockWindowEncounterWidget, "CTRL+ALT+J");
 	RegisterQuickAccessShortcut();
 
 	// Add an options window and a regular render callback
@@ -100,6 +102,8 @@ void AddonUnload()
 
 	DeregisterQuickAccessShortcut();
 	APIDefs->DeregisterKeybind(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL);
+	APIDefs->DeregisterKeybind(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_WIDGET);
+	APIDefs->DeregisterKeybind(KB_TOGGLE_LOCK_WINDOW_ENCOUNTER_WIDGET);
 
 	APIDefs->Log(ELogLevel_DEBUG, ADDON_NAME, "<c=#ff0000>Signing off</c>, it was an honor commander.");
 }
