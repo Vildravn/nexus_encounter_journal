@@ -116,7 +116,7 @@ void AddonUnload()
 void AddonRender()
 {
 	RenderWindowEncounterJournal();
-	RenderDhuumWidget();
+	RenderWidget();
 }
 
 ///----------------------------------------------------------------------------------------------------

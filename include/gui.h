@@ -22,7 +22,7 @@ void RegisterQuickAccessShortcut(void);
 void DeregisterQuickAccessShortcut(void);
 
 void RenderWindowEncounterJournal(void);
-void RenderDhuumWidget(void);
+void RenderWidget(void);
 
 Texture* GetBossTexture(std::string boss_name);
 void DrawMarker(SquadMarker marker);

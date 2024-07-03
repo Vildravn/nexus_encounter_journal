@@ -1,4 +1,5 @@
 #include <format>
+#include <list>
 #include "imgui/imgui.h"
 #include "imgui/imgui_extensions.h"
 #include "nlohmann/json.hpp"
@@ -12,6 +13,8 @@ using json = nlohmann::ordered_json;
 json j_encounters = json::parse(str_encounters_json);
 json::json_pointer selected_pointer;
 std::string selected_boss_name;
+std::list<std::string> widget_bosses = {"Dhuum", "Sabetha", "Trio"};
+std::string selected_widget_boss = "Dhuum";
 
 bool ShowWindowEncounterJournal = false;
 bool ShowWindowEncounterWidget = false;
@@ -194,7 +197,112 @@ void RenderWindowEncounterJournal()
     ImGui::PopFont();
 }
 
-void RenderDhuumWidget()
+void RenderDhuumTable()
+{
+	if (ImGui::BeginTable("Dhuum Table", 3))
+	{
+		ImGui::TableSetupColumn("G1");
+		ImGui::TableSetupColumn("G2");
+		ImGui::TableSetupColumn("G3");
+		//ImGui::TableHeadersRow();
+		ImGui::TableNextColumn();
+		ImGui::TextOutlined("\tG1\t");
+		DrawMarker(Arrow);
+		ImGui::TextOutlined("9:30\t");
+		DrawMarker(Square);
+		ImGui::TextOutlined("8:00");
+		DrawMarker(Triangle);
+		ImGui::TextOutlined("6:30");
+		DrawMarker(Heart);
+		ImGui::TextOutlined("5:00");
+		DrawMarker(Spiral);
+		ImGui::TextOutlined("3:30");
+		DrawMarker(Circle);
+		ImGui::TextOutlined("2:00");
+		DrawMarker(Star);
+		ImGui::TextOutlined("0:30");
+		ImGui::TableNextColumn();
+		ImGui::TextOutlined("\tG2\t");
+		DrawMarker(Circle);
+		ImGui::TextOutlined("9:00\t");
+		DrawMarker(Star);
+		ImGui::TextOutlined("7:30");
+		DrawMarker(Arrow);
+		ImGui::TextOutlined("6:00");
+		DrawMarker(Square);
+		ImGui::TextOutlined("4:30");
+		DrawMarker(Triangle);
+		ImGui::TextOutlined("3:00");
+		DrawMarker(Heart);
+		ImGui::TextOutlined("1:30");
+		ImGui::TableNextColumn();
+		ImGui::TextOutlined("\tG3\t");
+		DrawMarker(Heart);
+		ImGui::TextOutlined("8:30");
+		DrawMarker(Spiral);
+		ImGui::TextOutlined("7:00");
+		DrawMarker(Circle);
+		ImGui::TextOutlined("5:30");
+		DrawMarker(Star);
+		ImGui::TextOutlined("4:00");
+		DrawMarker(Arrow);
+		ImGui::TextOutlined("2:30");
+		DrawMarker(Square);
+		ImGui::TextOutlined("1:00");
+		ImGui::EndTable();
+	}
+}
+
+void RenderSabethaTable()
+{
+	if (ImGui::BeginTable("Sabetha Table", 2))
+	{
+		ImGui::TableSetupColumn("1,3");
+		ImGui::TableSetupColumn("2,4");
+		//ImGui::TableHeadersRow();
+		ImGui::TableNextColumn();
+		ImGui::TextOutlined("\t1,3\t");
+		DrawMarker(Arrow);
+		ImGui::TextOutlined("8:30\t");
+		DrawMarker(Heart);
+		ImGui::TextOutlined("7:30\t");
+		DrawMarker(Arrow);
+		ImGui::TextOutlined("6:30\t");
+		DrawMarker(Circle);
+		ImGui::TextOutlined("5:30\t");
+		DrawMarker(Arrow);
+		ImGui::TextOutlined("4:30\t");
+		DrawMarker(Heart);
+		ImGui::TextOutlined("3:30\t");
+		DrawMarker(Arrow);
+		ImGui::TextOutlined("2:30\t");
+		DrawMarker(Circle);
+		ImGui::TextOutlined("1:30\t");
+		DrawMarker(Arrow);
+		ImGui::TextOutlined("0:30\t");
+		ImGui::TableNextColumn();
+		ImGui::TextOutlined("\t2,4\t");
+		DrawMarker(Circle);
+		ImGui::TextOutlined("8:00\t");
+		DrawMarker(Square);
+		ImGui::TextOutlined("7:00\t");
+		DrawMarker(Heart);
+		ImGui::TextOutlined("6:00\t");
+		DrawMarker(Square);
+		ImGui::TextOutlined("5:00\t");
+		DrawMarker(Circle);
+		ImGui::TextOutlined("4:00\t");
+		DrawMarker(Square);
+		ImGui::TextOutlined("3:00\t");
+		DrawMarker(Heart);
+		ImGui::TextOutlined("2:00\t");
+		DrawMarker(Square);
+		ImGui::TextOutlined("1:00\t");
+		ImGui::EndTable();
+	}
+}
+
+void RenderWidget()
 {
 	if (!ShowWindowEncounterWidget) return;
 
@@ -204,69 +312,31 @@ void RenderDhuumWidget()
 	ImGuiWindowFlags widgetFlags = WidgetFlagsLocked;
 	if (!LockWindowEncounterWidget) widgetFlags = WidgetFlagsUnlocked;
 
-
 	if (ImGui::Begin("Boss widget", NULL, widgetFlags))
 	{
 		if (!LockWindowEncounterWidget)
 		{
-			if (ImGui::BeginCombo("##widgetCombo", "Dhuum"))
+			if (ImGui::BeginCombo("##widgetCombo", selected_widget_boss.c_str()))
 			{
-				ImGui::Selectable("Sabetha");
+				//ImGui::Selectable("Sabetha");
+				for (std::string boss : widget_bosses)
+				{
+					if (selected_widget_boss != boss)
+					{
+						if (ImGui::Selectable(boss.c_str()))
+						{
+							selected_widget_boss = boss;
+						}
+					}
+				}
 				ImGui::EndCombo();
 			}
 		}
-		if (ImGui::BeginTable("Dhuum Table", 3))
-		{
-			ImGui::TableSetupColumn("G1");
-			ImGui::TableSetupColumn("G2");
-			ImGui::TableSetupColumn("G3");
-			//ImGui::TableHeadersRow();
-			ImGui::TableNextColumn();
-			ImGui::TextOutlined("\tG1\t");
-			DrawMarker(Arrow);
-			ImGui::TextOutlined("9:30\t");
-			DrawMarker(Square);
-			ImGui::TextOutlined("8:00");
-			DrawMarker(Triangle);
-			ImGui::TextOutlined("6:30");
-			DrawMarker(Heart);
-			ImGui::TextOutlined("5:00");
-			DrawMarker(Spiral);
-			ImGui::TextOutlined("3:30");
-			DrawMarker(Circle);
-			ImGui::TextOutlined("2:00");
-			DrawMarker(Star);
-			ImGui::TextOutlined("0:30");
-			ImGui::TableNextColumn();
-			ImGui::TextOutlined("\tG2\t");
-			DrawMarker(Circle);
-			ImGui::TextOutlined("9:00\t");
-			DrawMarker(Star);
-			ImGui::TextOutlined("7:30");
-			DrawMarker(Arrow);
-			ImGui::TextOutlined("6:00");
-			DrawMarker(Square);
-			ImGui::TextOutlined("4:30");
-			DrawMarker(Triangle);
-			ImGui::TextOutlined("3:00");
-			DrawMarker(Heart);
-			ImGui::TextOutlined("1:30");
-			ImGui::TableNextColumn();
-			ImGui::TextOutlined("\tG3\t");
-			DrawMarker(Heart);
-			ImGui::TextOutlined("8:30");
-			DrawMarker(Spiral);
-			ImGui::TextOutlined("7:00");
-			DrawMarker(Circle);
-			ImGui::TextOutlined("5:30");
-			DrawMarker(Star);
-			ImGui::TextOutlined("4:00");
-			DrawMarker(Arrow);
-			ImGui::TextOutlined("2:30");
-			DrawMarker(Square);
-			ImGui::TextOutlined("1:00");
-			ImGui::EndTable();
-		}
+
+		if (selected_widget_boss == "Sabetha") RenderSabethaTable();
+		else if (selected_widget_boss == "Dhuum") RenderDhuumTable();
+
+		ImGui::End();
 	}
 	ImGui::PopFont();
 }
