@@ -308,6 +308,7 @@ void RenderWidget()
 	ImGuiWindowFlags widgetFlags = WidgetFlagsLocked;
 	if (!LockWindowEncounterWidget) widgetFlags = WidgetFlagsUnlocked;
 
+	ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
 	if (ImGui::Begin("Boss widget", NULL, widgetFlags))
 	{
 		if (!LockWindowEncounterWidget)
@@ -334,6 +335,7 @@ void RenderWidget()
 
 		ImGui::End();
 	}
+	ImGui::PopStyleColor();
 	ImGui::PopFont();
 }
 
