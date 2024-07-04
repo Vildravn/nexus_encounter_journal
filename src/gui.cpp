@@ -16,10 +16,6 @@ std::string selected_boss_name;
 std::list<std::string> widget_bosses = {"Dhuum", "Sabetha", "Trio"};
 std::string selected_widget_boss = "Dhuum";
 
-bool ShowWindowEncounterJournal = false;
-bool ShowWindowEncounterWidget = false;
-bool LockWindowEncounterWidget = true;
-
 ImGuiWindowFlags WidgetFlagsLocked = 
 	ImGuiWindowFlags_NoCollapse + 
 	ImGuiWindowFlags_NoScrollbar + 

@@ -125,5 +125,8 @@ void AddonRender()
 ///----------------------------------------------------------------------------------------------------
 void AddonOptions()
 {
-	
+	ImGui::TextDisabled("Boss Widget");
+	ImGui::Checkbox("Show Widget", &ShowWindowEncounterWidget);
+	//ImGui::SetTooltip("Unlocking the widget lets you move it and change the content.");
+	ImGui::Checkbox("Lock Widget", &LockWindowEncounterWidget);
 }

@@ -12,4 +12,8 @@ extern const char* KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL;
 extern const char* KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_WIDGET;
 extern const char* KB_TOGGLE_LOCK_WINDOW_ENCOUNTER_WIDGET;
 
+extern bool ShowWindowEncounterJournal;
+extern bool ShowWindowEncounterWidget;
+extern bool LockWindowEncounterWidget;
+
 #endif // !NEXUS_ENCOUNTER_JOURNAL_SHARED_H
