@@ -298,9 +298,40 @@ void RenderSabethaTable()
 	}
 }
 
+void RenderTrioTable()
+{
+	DrawMarker(Arrow);
+	ImGui::TextOutlined("6:50 - Berg");
+	DrawMarker(Circle);
+	ImGui::TextOutlined("4:50 - Zane");
+	DrawMarker(Heart);
+	ImGui::TextOutlined("2:45 - Narella");
+	ImGui::NewLine();
+	ImGui::TextOutlined("Mortars");
+	if (ImGui::BeginTable("Mortars Table", 4))
+	{
+		ImGui::TableSetupColumn("1");
+		ImGui::TableSetupColumn("2");
+		ImGui::TableSetupColumn("3");
+		ImGui::TableSetupColumn("4");
+		ImGui::TableNextColumn();
+		ImGui::TextOutlined("5:20");
+		ImGui::TableNextColumn();
+		ImGui::TextOutlined("4:20");
+		ImGui::TableNextColumn();
+		ImGui::TextOutlined("3:20");
+		ImGui::TableNextColumn();
+		ImGui::TextOutlined("2:20");
+		ImGui::EndTable();
+	}
+}
+
 void RenderWidget()
 {
+	if (!NexusLink || !MumbleLink) return;
 	if (!ShowWindowEncounterWidget) return;
+	if (!NexusLink->IsGameplay) return;
+	if (OnlyShowWidgetInstanced && MumbleLink->Context.MapType != Mumble::EMapType::Instance) return;
 
     // Dhuum widget prototype
     ImGui::PushFont((ImFont*)NexusLink->FontUI);
@@ -332,6 +363,7 @@ void RenderWidget()
 
 		if (selected_widget_boss == "Sabetha") RenderSabethaTable();
 		else if (selected_widget_boss == "Dhuum") RenderDhuumTable();
+		else if (selected_widget_boss == "Trio") RenderTrioTable();
 
 		ImGui::End();
 	}
@@ -349,6 +381,102 @@ Texture* GetBossTexture(std::string boss_name)
 	{
 		return APIDefs->GetTextureOrCreateFromResource("TEX_GORSEVAL", IDB_GORSEVAL, hSelf);
 	}
+	else if (boss_name == "Sabetha")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_SABETHA", IDB_SABETHA, hSelf);
+	}
+	else if (boss_name == "Slothasor")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_SLOTHASOR", IDB_SLOTHASOR, hSelf);
+	}
+	else if (boss_name == "Prison Camp")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_ZANE", IDB_ZANE, hSelf);
+	}
+	else if (boss_name == "Matthias")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_MATTHIAS", IDB_MATTHIAS, hSelf);
+	}
+	else if (boss_name == "Escort")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_ESCORT", IDB_ESCORT, hSelf);
+	}
+	else if (boss_name == "Keep Construct")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_KEEP_CONSTRUCT", IDB_KEEP_CONSTRUCT, hSelf);
+	}
+	else if (boss_name == "Twisted Castle")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_TWISTED_CASTLE", IDB_TWISTED_CASTLE, hSelf);
+	}
+	else if (boss_name == "Xera")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_XERA", IDB_XERA, hSelf);
+	}
+	else if (boss_name == "Cairn the Indomitable")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_CAIRN", IDB_CAIRN, hSelf);
+	}
+	else if (boss_name == "Mursaat Overseer")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_MURSAAT_OVERSEER", IDB_MURSAAT_OVERSEER, hSelf);
+	}
+	else if (boss_name == "Samarog")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_SAMAROG", IDB_SAMAROG, hSelf);
+	}
+	else if (boss_name == "Deimos")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_DEIMOS", IDB_DEIMOS, hSelf);
+	}
+	else if (boss_name == "Soulless Horror")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_SOULLESS_HORROR", IDB_SOULLESS_HORROR, hSelf);
+	}
+	else if (boss_name == "River of Souls")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_RIVER_OF_SOULS", IDB_RIVER_OF_SOULS, hSelf);
+	}
+	else if (boss_name == "Eater of Souls")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_EATER_OF_SOULS", IDB_EATER_OF_SOULS, hSelf);
+	}
+	else if (boss_name == "Broken King")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_BROKEN_KING", IDB_BROKEN_KING, hSelf);
+	}
+	else if (boss_name == "Eyes of Judgment and Fate")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_EYES_OF_FATE", IDB_EYES_OF_FATE, hSelf);
+	}
+	else if (boss_name == "Dhuum")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_DHUUM", IDB_DHUUM, hSelf);
+	}
+	else if (boss_name == "Conjured Amalgamate")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_CONJURED_AMALGAMATE", IDB_CONJURED_AMALGAMATE, hSelf);
+	}
+	else if (boss_name == "Twin Largos")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_NIKARE", IDB_NIKARE, hSelf);
+	}
+	else if (boss_name == "Qadim")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_QADIM", IDB_QADIM, hSelf);
+	}
+	else if (boss_name == "Cardinal Adina")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_ADINA", IDB_ADINA, hSelf);
+	}
+	else if (boss_name == "Cardinal Sabir")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_SABIR", IDB_SABIR, hSelf);
+	}
+	else if (boss_name == "Qadim the Peerless")
+	{
+		return APIDefs->GetTextureOrCreateFromResource("TEX_QADIM_THE_PEERLESS", IDB_QADIM_THE_PEERLESS, hSelf);
+	}
 	else
 	{
 		return APIDefs->GetTextureOrCreateFromResource("TEX_UNDER_CONSTRUCTION", IDB_UNDER_CONSTRUCTION, hSelf);
@@ -357,7 +485,6 @@ Texture* GetBossTexture(std::string boss_name)
 
 void DrawMarker(SquadMarker marker)
 {
-    //Texture* marker_texture = APIDefs->GetTextureOrCreateFromResource("TEX_MARKER_ARROW", IDB_MARKER_ARROW, hSelf);
     Texture* marker_texture = nullptr;
 
     switch (marker)

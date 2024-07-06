@@ -75,6 +75,7 @@ void AddonLoad(AddonAPI* aApi)
 	ImGui::SetAllocatorFunctions((void* (*)(size_t, void*))APIDefs->ImguiMalloc, (void(*)(void*, void*))APIDefs->ImguiFree); // on imgui 1.80+
 
 	NexusLink = (NexusLinkData*)APIDefs->GetResource("DL_NEXUS_LINK");
+	MumbleLink = (Mumble::Data*)APIDefs->GetResource("DL_MUMBLE_LINK");
 
 	APIDefs->GetTextureOrCreateFromResource("TEX_JOURNAL_ICON", IDB_JOURNAL_ICON, hSelf);
 	APIDefs->GetTextureOrCreateFromResource("TEX_JOURNAL_ICON_HOVER", IDB_JOURNAL_ICON_HOVER, hSelf);
@@ -105,6 +106,9 @@ void AddonUnload()
 	APIDefs->DeregisterKeybind(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_WIDGET);
 	APIDefs->DeregisterKeybind(KB_TOGGLE_LOCK_WINDOW_ENCOUNTER_WIDGET);
 
+	MumbleLink = nullptr;
+	NexusLink = nullptr;
+
 	APIDefs->Log(ELogLevel_DEBUG, ADDON_NAME, "<c=#ff0000>Signing off</c>, it was an honor commander.");
 }
 
@@ -129,4 +133,5 @@ void AddonOptions()
 	ImGui::Checkbox("Show Widget", &ShowWindowEncounterWidget);
 	//ImGui::SetTooltip("Unlocking the widget lets you move it and change the content.");
 	ImGui::Checkbox("Lock Widget", &LockWindowEncounterWidget);
+	ImGui::Checkbox("Only show widget inside instances", &OnlyShowWidgetInstanced);
 }
