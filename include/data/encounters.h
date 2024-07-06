@@ -31,6 +31,50 @@ std::string str_encounters_json = R"###({
         "Keep Construct": {},
         "Twisted Castle": {},
         "Xera": {}
+    },
+    "Bastion of the Penitent": {
+        "Cairn the Indomitable": {},
+        "Mursaat Overseer": {},
+        "Samarog": {},
+        "Deimos": {}
+    },
+    "Hall of Chains": {
+        "Soulless Horror": {},
+        "River of Souls": {},
+        "Eater of Souls": {},
+        "Broken King": {},
+        "Eyes of Judgment and Fate": {},
+        "Dhuum": {}
+    },
+    "Mythwright Gambit": {
+        "Conjured Amalgamate": {},
+        "Twin Largos": {},
+        "Qadim": {}
+    },
+    "The Key of Ahdashim": {
+        "Cardinal Adina": {},
+        "Cardinal Sabir": {},
+        "Qadim the Peerless": {}
+    },
+    "Core Tyria Strikes": {
+        "Old Lion's Court": {}
+    },
+    "Icebrood Saga Strikes": {
+        "Shiverpeaks Pass": {},
+        "Voice and Claw of the Fallen": {},
+        "Fraenir of Jormag": {},
+        "Boneskinner": {},
+        "Whisper of Jormag": {}
+    },
+    "End of Dragons Strikes": {
+        "Aetherblade Hideout": {},
+        "Xunlai Jade Junkyard": {},
+        "Kaineng Overlook": {},
+        "Harvest Temple": {}
+    },
+    "Secrets of the Obscure Strikes": {
+        "Cosmic Observatory": {},
+        "Temple of Febe": {}
     }
 })###";
 
