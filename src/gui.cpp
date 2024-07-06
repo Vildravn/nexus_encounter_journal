@@ -346,7 +346,6 @@ void RenderWidget()
 		{
 			if (ImGui::BeginCombo("##widgetCombo", selected_widget_boss.c_str()))
 			{
-				//ImGui::Selectable("Sabetha");
 				for (std::string boss : widget_bosses)
 				{
 					if (selected_widget_boss != boss)
@@ -373,114 +372,45 @@ void RenderWidget()
 
 Texture* GetBossTexture(std::string boss_name)
 {
-	if (boss_name == "Vale Guardian")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_VALE_GUARDIAN", IDB_VALE_GUARDIAN, hSelf);
-	}
-	else if (boss_name == "Gorseval")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_GORSEVAL", IDB_GORSEVAL, hSelf);
-	}
-	else if (boss_name == "Sabetha")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_SABETHA", IDB_SABETHA, hSelf);
-	}
-	else if (boss_name == "Slothasor")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_SLOTHASOR", IDB_SLOTHASOR, hSelf);
-	}
-	else if (boss_name == "Prison Camp")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_ZANE", IDB_ZANE, hSelf);
-	}
-	else if (boss_name == "Matthias")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_MATTHIAS", IDB_MATTHIAS, hSelf);
-	}
-	else if (boss_name == "Escort")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_ESCORT", IDB_ESCORT, hSelf);
-	}
-	else if (boss_name == "Keep Construct")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_KEEP_CONSTRUCT", IDB_KEEP_CONSTRUCT, hSelf);
-	}
-	else if (boss_name == "Twisted Castle")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_TWISTED_CASTLE", IDB_TWISTED_CASTLE, hSelf);
-	}
-	else if (boss_name == "Xera")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_XERA", IDB_XERA, hSelf);
-	}
-	else if (boss_name == "Cairn the Indomitable")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_CAIRN", IDB_CAIRN, hSelf);
-	}
-	else if (boss_name == "Mursaat Overseer")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_MURSAAT_OVERSEER", IDB_MURSAAT_OVERSEER, hSelf);
-	}
-	else if (boss_name == "Samarog")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_SAMAROG", IDB_SAMAROG, hSelf);
-	}
-	else if (boss_name == "Deimos")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_DEIMOS", IDB_DEIMOS, hSelf);
-	}
-	else if (boss_name == "Soulless Horror")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_SOULLESS_HORROR", IDB_SOULLESS_HORROR, hSelf);
-	}
-	else if (boss_name == "River of Souls")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_RIVER_OF_SOULS", IDB_RIVER_OF_SOULS, hSelf);
-	}
-	else if (boss_name == "Eater of Souls")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_EATER_OF_SOULS", IDB_EATER_OF_SOULS, hSelf);
-	}
-	else if (boss_name == "Broken King")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_BROKEN_KING", IDB_BROKEN_KING, hSelf);
-	}
-	else if (boss_name == "Eyes of Judgment and Fate")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_EYES_OF_FATE", IDB_EYES_OF_FATE, hSelf);
-	}
-	else if (boss_name == "Dhuum")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_DHUUM", IDB_DHUUM, hSelf);
-	}
-	else if (boss_name == "Conjured Amalgamate")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_CONJURED_AMALGAMATE", IDB_CONJURED_AMALGAMATE, hSelf);
-	}
-	else if (boss_name == "Twin Largos")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_NIKARE", IDB_NIKARE, hSelf);
-	}
-	else if (boss_name == "Qadim")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_QADIM", IDB_QADIM, hSelf);
-	}
-	else if (boss_name == "Cardinal Adina")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_ADINA", IDB_ADINA, hSelf);
-	}
-	else if (boss_name == "Cardinal Sabir")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_SABIR", IDB_SABIR, hSelf);
-	}
-	else if (boss_name == "Qadim the Peerless")
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_QADIM_THE_PEERLESS", IDB_QADIM_THE_PEERLESS, hSelf);
-	}
-	else
-	{
-		return APIDefs->GetTextureOrCreateFromResource("TEX_UNDER_CONSTRUCTION", IDB_UNDER_CONSTRUCTION, hSelf);
-	}
+	if (boss_name == "Vale Guardian") return texVG;
+	else if (boss_name == "Gorseval") return texGors;
+	else if (boss_name == "Sabetha") return texSab;
+	else if (boss_name == "Slothasor") return texSloth;
+	else if (boss_name == "Prison Camp") return texTrio;
+	else if (boss_name == "Matthias") return texMatthias;
+	else if (boss_name == "Escort") return texEscort;
+	else if (boss_name == "Keep Construct") return texKC;
+	else if (boss_name == "Twisted Castle") return texTC;
+	else if (boss_name == "Xera") return texXera;
+	else if (boss_name == "Cairn the Indomitable") return texCairn;
+	else if (boss_name == "Mursaat Overseer") return texMO;
+	else if (boss_name == "Samarog") return texSamarog;
+	else if (boss_name == "Deimos") return texDeimos;
+	else if (boss_name == "Soulless Horror") return texSH;
+	else if (boss_name == "River of Souls") return texRoS;
+	else if (boss_name == "Eater of Souls") return texEoS;
+	else if (boss_name == "Broken King") return texBK;
+	else if (boss_name == "Eyes of Judgment and Fate") return texEyes;
+	else if (boss_name == "Dhuum") return texDhuum;
+	else if (boss_name == "Conjured Amalgamate") return texCA;
+	else if (boss_name == "Twin Largos") return texTL;
+	else if (boss_name == "Qadim") return texQadim;
+	else if (boss_name == "Cardinal Adina") return texAdina;
+	else if (boss_name == "Cardinal Sabir") return texSabir;
+	else if (boss_name == "Qadim the Peerless") return texQTP;
+	else if (boss_name == "Shiverpeaks Pass")  return texSP;
+	else if (boss_name == "Voice and Claw of the Fallen") return texVoiceClaw;
+	else if (boss_name == "Fraenir of Jormag") return texFoJ;
+	else if (boss_name == "Boneskinner") return texBS;
+	else if (boss_name == "Whisper of Jormag") return texWoJ;
+	else if (boss_name == "Aetherblade Hideout") return texAH;
+	else if (boss_name == "Xunlai Jade Junkyard") return texXJJ;
+	else if (boss_name == "Kaineng Overlook") return texKO;
+	else if (boss_name == "Harvest Temple") return texHT;
+	else if (boss_name == "Cosmic Observatory") return texCO;
+	else if (boss_name == "Temple of Febe") return texFebe;
+	else if (boss_name == "Old Lion's Court") return texOLC;
+	else return texWIP;
 }
 
 void DrawMarker(SquadMarker marker)
