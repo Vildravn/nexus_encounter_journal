@@ -54,3 +54,12 @@ Texture* texKO = nullptr;
 Texture* texHT = nullptr;
 Texture* texCO = nullptr;
 Texture* texFebe = nullptr;
+
+Texture* texArrow = nullptr;
+Texture* texCircle = nullptr;
+Texture* texHeart = nullptr;
+Texture* texSpiral = nullptr;
+Texture* texSquare = nullptr;
+Texture* texStar = nullptr;
+Texture* texTriangle = nullptr;
+Texture* texX = nullptr;

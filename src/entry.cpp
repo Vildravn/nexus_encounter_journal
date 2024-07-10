@@ -106,6 +106,15 @@ void ReceiveTexture(const char* aIdentifier, Texture* aTexture)
 	if (str == "TEX_DAGDA") texCO = aTexture;
 	if (str == "TEX_CERUS") texFebe = aTexture;
 
+	if (str == "TEX_MARKER_ARROW") texArrow = aTexture;
+	if (str == "TEX_MARKER_CIRCLE") texCircle = aTexture;
+	if (str == "TEX_MARKER_HEART") texHeart = aTexture;
+	if (str == "TEX_MARKER_SPIRAL") texSpiral = aTexture;
+	if (str == "TEX_MARKER_SQUARE") texSquare = aTexture;
+	if (str == "TEX_MARKER_STAR") texStar = aTexture;
+	if (str == "TEX_MARKER_TRIANGLE") texTriangle = aTexture;
+	if (str == "TEX_MARKER_X") texX = aTexture;
+
 }
 
 ///----------------------------------------------------------------------------------------------------
@@ -165,6 +174,15 @@ void AddonLoad(AddonAPI* aApi)
 	APIDefs->LoadTextureFromResource("TEX_HARVEST_TEMPLE", IDB_HARVEST_TEMPLE, hSelf, ReceiveTexture);
 	APIDefs->LoadTextureFromResource("TEX_DAGDA", IDB_DAGDA, hSelf, ReceiveTexture);
 	APIDefs->LoadTextureFromResource("TEX_CERUS", IDB_CERUS, hSelf, ReceiveTexture);
+
+	APIDefs->LoadTextureFromResource("TEX_MARKER_ARROW", IDB_MARKER_ARROW, hSelf, ReceiveTexture);
+	APIDefs->LoadTextureFromResource("TEX_MARKER_CIRCLE", IDB_MARKER_CIRCLE, hSelf, ReceiveTexture);
+	APIDefs->LoadTextureFromResource("TEX_MARKER_HEART", IDB_MARKER_HEART, hSelf, ReceiveTexture);
+	APIDefs->LoadTextureFromResource("TEX_MARKER_SPIRAL", IDB_MARKER_SPIRAL, hSelf, ReceiveTexture);
+	APIDefs->LoadTextureFromResource("TEX_MARKER_SQUARE", IDB_MARKER_SQUARE, hSelf, ReceiveTexture);
+	APIDefs->LoadTextureFromResource("TEX_MARKER_STAR", IDB_MARKER_STAR, hSelf, ReceiveTexture);
+	APIDefs->LoadTextureFromResource("TEX_MARKER_TRIANGLE", IDB_MARKER_TRIANGLE, hSelf, ReceiveTexture);
+	APIDefs->LoadTextureFromResource("TEX_MARKER_X", IDB_MARKER_X, hSelf, ReceiveTexture);
 
 	APIDefs->RegisterKeybindWithString(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL, ToggleShowWindowEncounterJournal, "CTRL+J");
 	APIDefs->RegisterKeybindWithString(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_WIDGET, ToggleShowWindowEncounterWidget, "CTRL+SHIFT+J");
@@ -232,6 +250,15 @@ void AddonUnload()
 	texHT = nullptr;
 	texCO = nullptr;
 	texFebe = nullptr;
+
+	texArrow = nullptr;
+	texCircle = nullptr;
+	texHeart = nullptr;
+	texSpiral = nullptr;
+	texSquare = nullptr;
+	texStar = nullptr;
+	texTriangle = nullptr;
+	texX = nullptr;
 
 	MumbleLink = nullptr;
 	NexusLink = nullptr;

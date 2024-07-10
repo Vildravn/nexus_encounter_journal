@@ -59,4 +59,13 @@ extern Texture* texHT;
 extern Texture* texCO;
 extern Texture* texFebe;
 
+extern Texture* texArrow;
+extern Texture* texCircle;
+extern Texture* texHeart;
+extern Texture* texSpiral;
+extern Texture* texSquare;
+extern Texture* texStar;
+extern Texture* texTriangle;
+extern Texture* texX;
+
 #endif // !NEXUS_ENCOUNTER_JOURNAL_SHARED_H

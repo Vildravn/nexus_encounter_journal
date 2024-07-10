@@ -420,35 +420,35 @@ void DrawMarker(SquadMarker marker)
     switch (marker)
     {
         case Arrow:
-            marker_texture = APIDefs->GetTextureOrCreateFromResource("TEX_MARKER_ARROW", IDB_MARKER_ARROW, hSelf);
+            marker_texture = texArrow;
             break;
         
         case Circle:
-            marker_texture = APIDefs->GetTextureOrCreateFromResource("TEX_MARKER_CIRCLE", IDB_MARKER_CIRCLE, hSelf);
+            marker_texture = texCircle;
             break;
         
         case Heart:
-            marker_texture = APIDefs->GetTextureOrCreateFromResource("TEX_MARKER_HEART", IDB_MARKER_HEART, hSelf);
+            marker_texture = texHeart;
             break;
 
         case Spiral:
-            marker_texture = APIDefs->GetTextureOrCreateFromResource("TEX_MARKER_SPIRAL", IDB_MARKER_SPIRAL, hSelf);
+            marker_texture = texSpiral;
             break;
         
         case Square:
-            marker_texture = APIDefs->GetTextureOrCreateFromResource("TEX_MARKER_SQUARE", IDB_MARKER_SQUARE, hSelf);
+            marker_texture = texSquare;
             break;
 
         case Star:
-            marker_texture = APIDefs->GetTextureOrCreateFromResource("TEX_MARKER_STAR", IDB_MARKER_STAR, hSelf);
+            marker_texture = texStar;
             break;
         
         case Triangle:
-            marker_texture = APIDefs->GetTextureOrCreateFromResource("TEX_MARKER_TRIANGLE", IDB_MARKER_TRIANGLE, hSelf);
+            marker_texture = texTriangle;
             break;
         
         case X:
-            marker_texture = APIDefs->GetTextureOrCreateFromResource("TEX_MARKER_X", IDB_MARKER_X, hSelf);
+            marker_texture = texX;
             break;
     }
 
