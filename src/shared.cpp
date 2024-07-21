@@ -11,7 +11,7 @@ const char* KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_WIDGET = "KB_TOGGLE_SHOW_WINDOW_ENCO
 const char* KB_TOGGLE_LOCK_WINDOW_ENCOUNTER_WIDGET = "KB_TOGGLE_LOCK_WINDOW_ENCOUNTER_WIDGET";
 
 bool ShowWindowEncounterJournal = false;
-bool ShowWindowEncounterWidget = false;
+bool ShowWindowEncounterWidget = true;
 bool LockWindowEncounterWidget = true;
 bool OnlyShowWidgetInstanced = true;
 

@@ -1,5 +1,6 @@
 #include <format>
 #include <list>
+#include <cmath>
 #include "imgui/imgui.h"
 #include "imgui/imgui_extensions.h"
 #include "nlohmann/json.hpp"
@@ -13,8 +14,6 @@ using json = nlohmann::ordered_json;
 json j_encounters = json::parse(str_encounters_json);
 json::json_pointer selected_pointer;
 std::string selected_boss_name;
-std::list<std::string> widget_bosses = {"Dhuum", "Sabetha", "Trio"};
-std::string selected_widget_boss = "Dhuum";
 
 ImGuiWindowFlags WidgetFlagsLocked = 
 	ImGuiWindowFlags_NoCollapse + 
@@ -326,6 +325,11 @@ void RenderTrioTable()
 	}
 }
 
+float GetPlayerDistanceSquaredFromPoint(float x, float y)
+{
+	return pow(x - MumbleLink->Context.Compass.PlayerPosition.X, 2) + pow(y - MumbleLink->Context.Compass.PlayerPosition.Y, 2);
+}
+
 void RenderWidget()
 {
 	if (!NexusLink || !MumbleLink) return;
@@ -342,27 +346,14 @@ void RenderWidget()
 	ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
 	if (ImGui::Begin("Boss widget", NULL, widgetFlags))
 	{
-		if (!LockWindowEncounterWidget)
-		{
-			if (ImGui::BeginCombo("##widgetCombo", selected_widget_boss.c_str()))
-			{
-				for (std::string boss : widget_bosses)
-				{
-					if (selected_widget_boss != boss)
-					{
-						if (ImGui::Selectable(boss.c_str()))
-						{
-							selected_widget_boss = boss;
-						}
-					}
-				}
-				ImGui::EndCombo();
-			}
-		}
-
-		if (selected_widget_boss == "Sabetha") RenderSabethaTable();
-		else if (selected_widget_boss == "Dhuum") RenderDhuumTable();
-		else if (selected_widget_boss == "Trio") RenderTrioTable();
+		float dist_from_sabetha = GetPlayerDistanceSquaredFromPoint(36651.1, 28924.5);
+		float dist_from_trio = GetPlayerDistanceSquaredFromPoint(35893.1, 29866.6);
+		float dist_from_dhuum = GetPlayerDistanceSquaredFromPoint(53247.4, 32344.7);
+		float dist_cutoff = 25000.0f;
+		if (dist_from_sabetha < dist_cutoff) RenderSabethaTable();
+		else if (dist_from_trio < dist_cutoff) RenderTrioTable();
+		else if (dist_from_dhuum < dist_cutoff) RenderDhuumTable();
+		else ImGui::TextOutlined("No boss nearby or no widget");
 
 		ImGui::End();
 	}
