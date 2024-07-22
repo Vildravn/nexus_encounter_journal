@@ -325,6 +325,32 @@ void RenderTrioTable()
 	}
 }
 
+void RenderSlothTable()
+{
+	if (ImGui::BeginTable("Sloth Table", 2))
+	{
+		ImGui::TableSetupColumn("Time");
+		ImGui::TableSetupColumn("Shroom");
+		ImGui::TableNextColumn();
+		ImGui::TextOutlined("Mushroom 1");
+		ImGui::TextOutlined("Mushroom 2");
+		ImGui::TextOutlined("Mushroom 3");
+		ImGui::TextOutlined("Mushroom 4");
+		ImGui::TextOutlined("Mushroom 1");
+		ImGui::TextOutlined("Mushroom 2");
+		ImGui::TextOutlined("Mushroom 3");
+		ImGui::TableNextColumn();
+		ImGui::TextOutlined("7:00");
+		ImGui::TextOutlined("6:00");
+		ImGui::TextOutlined("5:00");
+		ImGui::TextOutlined("4:00");
+		ImGui::TextOutlined("3:00");
+		ImGui::TextOutlined("2:00");
+		ImGui::TextOutlined("1:00");
+		ImGui::EndTable();
+	}
+}
+
 float GetPlayerDistanceSquaredFromPoint(float x, float y)
 {
 	return pow(x - MumbleLink->Context.Compass.PlayerPosition.X, 2) + pow(y - MumbleLink->Context.Compass.PlayerPosition.Y, 2);
@@ -349,10 +375,13 @@ void RenderWidget()
 		float dist_from_sabetha = GetPlayerDistanceSquaredFromPoint(36651.1, 28924.5);
 		float dist_from_trio = GetPlayerDistanceSquaredFromPoint(35893.1, 29866.6);
 		float dist_from_dhuum = GetPlayerDistanceSquaredFromPoint(53247.4, 32344.7);
-		float dist_cutoff = 25000.0f;
+		float dist_from_sloth = GetPlayerDistanceSquaredFromPoint(36297.1, 29445.6)
+		const float dist_cutoff = 25000.0f;
+
 		if (dist_from_sabetha < dist_cutoff) RenderSabethaTable();
 		else if (dist_from_trio < dist_cutoff) RenderTrioTable();
 		else if (dist_from_dhuum < dist_cutoff) RenderDhuumTable();
+		else if (dist_from_sloth < dist_cutoff) RenderSlothTable();
 		else ImGui::TextOutlined("No boss nearby or no widget");
 
 		ImGui::End();
