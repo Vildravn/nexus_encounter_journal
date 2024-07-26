@@ -332,13 +332,20 @@ void RenderSlothTable()
 		ImGui::TableSetupColumn("Time");
 		ImGui::TableSetupColumn("Shroom");
 		ImGui::TableNextColumn();
-		ImGui::TextOutlined("Mushroom 1");
-		ImGui::TextOutlined("Mushroom 2");
-		ImGui::TextOutlined("Mushroom 3");
-		ImGui::TextOutlined("Mushroom 4");
-		ImGui::TextOutlined("Mushroom 1");
-		ImGui::TextOutlined("Mushroom 2");
-		ImGui::TextOutlined("Mushroom 3");
+		DrawMarker(Arrow);
+		ImGui::TextOutlined("Mushroom 1\t");
+		DrawMarker(Circle);
+		ImGui::TextOutlined("Mushroom 2\t");
+		DrawMarker(Heart);
+		ImGui::TextOutlined("Mushroom 3\t");
+		DrawMarker(Square);
+		ImGui::TextOutlined("Mushroom 4\t");
+		DrawMarker(Arrow);
+		ImGui::TextOutlined("Mushroom 1\t");
+		DrawMarker(Circle);
+		ImGui::TextOutlined("Mushroom 2\t");
+		DrawMarker(Heart);
+		ImGui::TextOutlined("Mushroom 3\t");
 		ImGui::TableNextColumn();
 		ImGui::TextOutlined("7:00");
 		ImGui::TextOutlined("6:00");
@@ -375,7 +382,7 @@ void RenderWidget()
 		float dist_from_sabetha = GetPlayerDistanceSquaredFromPoint(36651.1, 28924.5);
 		float dist_from_trio = GetPlayerDistanceSquaredFromPoint(35893.1, 29866.6);
 		float dist_from_dhuum = GetPlayerDistanceSquaredFromPoint(53247.4, 32344.7);
-		float dist_from_sloth = GetPlayerDistanceSquaredFromPoint(36297.1, 29445.6)
+		float dist_from_sloth = GetPlayerDistanceSquaredFromPoint(36297.1, 29445.6);
 		const float dist_cutoff = 25000.0f;
 
 		if (dist_from_sabetha < dist_cutoff) RenderSabethaTable();
