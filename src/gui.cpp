@@ -66,6 +66,8 @@ void RenderWindowEncounterJournal()
     if (!ShowWindowEncounterJournal) return;
 
     ImGui::PushFont((ImFont*)NexusLink->FontUI);
+	ImGui::SetNextWindowSize(ImVec2(820, 380), ImGuiCond_FirstUseEver);
+	ImGui::SetNextWindowPos(ImVec2(NexusLink->Width/2 - 820/2, NexusLink->Height/3 - 380/2), ImGuiCond_FirstUseEver); // Center window
     if (ImGui::Begin(ADDON_NAME, &ShowWindowEncounterJournal, ImGuiWindowFlags_NoCollapse + ImGuiWindowFlags_NoScrollbar + ImGuiWindowFlags_NoScrollWithMouse))
 	{
 		if (ImGui::BeginTable("MainTable", 2))
