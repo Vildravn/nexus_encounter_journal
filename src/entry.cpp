@@ -42,7 +42,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 ///----------------------------------------------------------------------------------------------------
 extern "C" __declspec(dllexport) AddonDefinition* GetAddonDef()
 {
-	AddonDef.Signature = -8935; // set to random unused negative integer
+	AddonDef.Signature = -89350; // set to random unused negative integer
 	AddonDef.APIVersion = NEXUS_API_VERSION;
 	AddonDef.Name = "Encounter Journal";
 	AddonDef.Version.Major = 0;
