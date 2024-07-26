@@ -370,7 +370,6 @@ void RenderWidget()
 	if (!NexusLink->IsGameplay) return;
 	if (OnlyShowWidgetInstanced && MumbleLink->Context.MapType != Mumble::EMapType::Instance) return;
 
-    // Dhuum widget prototype
     ImGui::PushFont((ImFont*)NexusLink->FontUI);
 
 	ImGuiWindowFlags widgetFlags = WidgetFlagsLocked;
@@ -387,7 +386,8 @@ void RenderWidget()
 
 		if (dist_from_sabetha < dist_cutoff) RenderSabethaTable();
 		else if (dist_from_trio < dist_cutoff) RenderTrioTable();
-		else if (dist_from_dhuum < dist_cutoff) RenderDhuumTable();
+		//else if (dist_from_dhuum < dist_cutoff) RenderDhuumTable();
+		else if (MumbleLink->Context.MapID == 1264) RenderDhuumTable(); //Workaround until we know the Z value of the PoI
 		else if (dist_from_sloth < dist_cutoff) RenderSlothTable();
 		else ImGui::TextOutlined("No boss nearby or no widget");
 
