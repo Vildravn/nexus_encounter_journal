@@ -392,6 +392,8 @@ void RenderWidget()
 		else if (MumbleLink->Context.MapID == 1264) RenderDhuumTable(); //Workaround until we know the Z value of the PoI
 		else if (dist_from_sloth < dist_cutoff) RenderSlothTable();
 		else ImGui::TextOutlined("No boss nearby or no widget");
+		ImVec2 widgetSize = ImGui::GetWindowSize();
+		ImGui::SetWindowPos("Boss widget", ImVec2(NexusLink->Width/2 - widgetSize.x/2, NexusLink->Height/2 - widgetSize.y/2), ImGuiCond_FirstUseEver);
 
 		ImGui::End();
 	}
