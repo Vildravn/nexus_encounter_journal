@@ -3,6 +3,7 @@
 #include <cmath>
 #include "imgui/imgui.h"
 #include "imgui/imgui_extensions.h"
+#include "imgui/imgui_markdown.h"
 #include "nlohmann/json.hpp"
 #include "gui.h"
 #include "resource.h"
@@ -59,6 +60,34 @@ void RegisterQuickAccessShortcut() {
 
 void DeregisterQuickAccessShortcut() {
 	APIDefs->RemoveShortcut("SHORTCUT_ENCOUNTER_JOURNAL");
+}
+
+void LinkCallback( ImGui::MarkdownLinkCallbackData data_ )
+{
+    std::string url( data_.link, data_.linkLength );
+    if( !data_.isImage )
+    {
+        ShellExecuteA( NULL, "open", url.c_str(), NULL, NULL, SW_SHOWNORMAL );
+    }
+}
+
+void MarkdownTooltipCallback( ImGui::MarkdownTooltipCallbackData data_ )
+{
+	if( data_.linkData.isImage )
+	{
+		ImGui::SetTooltip( "%.*s", data_.linkData.linkLength, data_.linkData.link );
+	}
+	else
+	{
+		ImGui::SetTooltip( "Open in browser\n%.*s", data_.linkData.linkLength, data_.linkData.link );
+	}
+}
+
+void Markdown(const std::string& markdown_)
+{
+    // You can make your own Markdown function with your prefered string container and markdown config.
+    ImGui::MarkdownConfig mdConfig{ LinkCallback, MarkdownTooltipCallback, NULL, NULL, { { (ImFont*)NexusLink->FontBig, true }, { (ImFont*)NexusLink->FontBig, true }, { (ImFont*)NexusLink->FontUI, false } }, NULL };
+    ImGui::Markdown( markdown_.c_str(), markdown_.length(), mdConfig );
 }
 
 void RenderWindowEncounterJournal()
@@ -147,16 +176,22 @@ void RenderWindowEncounterJournal()
 				}
 				else
 				{
+					ImGui::PushFont((ImFont*)NexusLink->FontBig);
+					ImGui::Text(selected_boss_name.c_str());
+					Markdown("***");
+					ImGui::NewLine();
+					ImGui::PushFont((ImFont*)NexusLink->FontUI);
+
 					if (selected_boss.contains("desc"))
 					{
-						ImGui::TextWrapped(selected_boss["desc"].get<std::string>().c_str());
+						Markdown(selected_boss["desc"].get<std::string>());
 					}
 
 					if (selected_boss.contains("comm"))
 					{
 						if (ImGui::CollapsingHeader("Commander"))
 						{
-							ImGui::TextWrapped(selected_boss["comm"].get<std::string>().c_str());
+							Markdown(selected_boss["comm"].get<std::string>());
 						}
 					}
 
@@ -164,7 +199,7 @@ void RenderWindowEncounterJournal()
 					{
 						if (ImGui::CollapsingHeader("Tank"))
 						{
-							ImGui::TextWrapped(selected_boss["tank"].get<std::string>().c_str());
+							Markdown(selected_boss["tank"].get<std::string>());
 						}
 					}
 
@@ -172,7 +207,7 @@ void RenderWindowEncounterJournal()
 					{
 						if (ImGui::CollapsingHeader("Healer"))
 						{
-							ImGui::TextWrapped(selected_boss["heal"].get<std::string>().c_str());
+							Markdown(selected_boss["heal"].get<std::string>());
 						}
 					}
 
@@ -180,7 +215,15 @@ void RenderWindowEncounterJournal()
 					{
 						if (ImGui::CollapsingHeader("DPS"))
 						{
-							ImGui::TextWrapped(selected_boss["dps"].get<std::string>().c_str());
+							Markdown(selected_boss["dps"].get<std::string>());
+						}
+					}
+
+					if (selected_boss.contains("links"))
+					{
+						if (ImGui::CollapsingHeader("Links"))
+						{
+							Markdown(selected_boss["links"].get<std::string>());
 						}
 					}
 				}
@@ -392,6 +435,7 @@ void RenderWidget()
 		else if (MumbleLink->Context.MapID == 1264) RenderDhuumTable(); //Workaround until we know the Z value of the PoI
 		else if (dist_from_sloth < dist_cutoff) RenderSlothTable();
 		else ImGui::TextOutlined("No boss nearby or no widget");
+
 		ImVec2 widgetSize = ImGui::GetWindowSize();
 		ImGui::SetWindowPos("Boss widget", ImVec2(NexusLink->Width/2 - widgetSize.x/2, NexusLink->Height/2 - widgetSize.y/2), ImGuiCond_FirstUseEver);
 
