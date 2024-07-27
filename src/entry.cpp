@@ -44,10 +44,10 @@ extern "C" __declspec(dllexport) AddonDefinition* GetAddonDef()
 {
 	AddonDef.Signature = -89350; // set to random unused negative integer
 	AddonDef.APIVersion = NEXUS_API_VERSION;
-	AddonDef.Name = "Encounter Journal";
+	AddonDef.Name = "Encounter Journal (Alpha)";
 	AddonDef.Version.Major = 0;
 	AddonDef.Version.Minor = 0;
-	AddonDef.Version.Build = 0;
+	AddonDef.Version.Build = 9;
 	AddonDef.Version.Revision = 1;
 	AddonDef.Author = "Ravenheart.8935";
 	AddonDef.Description = "Cliffnotes about dungeon, strike and raid bosses.";
