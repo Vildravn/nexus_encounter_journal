@@ -4,7 +4,7 @@
 std::string str_encounters_json = R"###({
     "Spirit Vale": {
         "Vale Guardian": {
-            "desc": "**Health:** 22 021 440\n**Enrage Timer:** 8 minutes\n**Enrage Effect:** Gains [Enraged](https://wiki.guildwars2.com/wiki/Enraged_(200%25)), increasing damage dealt by 200%\n**Fixation Mechanics:** Highest toughness\n\n",
+            "desc": "**Health:** 22 021 440\n**Enrage Timer:** 8 minutes\n**Enrage Effect:** Gains ![Enraged](/961403.png) [Enraged](https://wiki.guildwars2.com/wiki/Enraged_(200%25)), increasing damage dealt by 200%\n**Fixation Mechanics:** Highest toughness\n\n",
             "links": "[Wiki](https://wiki.guildwars2.com/wiki/Spirit_Vale#Vale_Guardian)\n[Snowcrows](https://snowcrows.com/guides/raids/spirit-vale/vale-guardian)"
         },
         "Gorseval": {
@@ -68,8 +68,8 @@ std::string str_encounters_json = R"###({
     },
     "Hall of Chains": {
         "Soulless Horror": {
-            "desc": "**Health:** 35 391 600\n**Enrage Timer:** 8 minutes\n**Enrage Effect:** [Enraged](https://wiki.guildwars2.com/wiki/Enraged_(200%25)) - Increases damage dealt by 200%\n**Fixation Mechanic:** Player that activates the [Issue Challenge](https://wiki.guildwars2.com/wiki/Issue_Challenge) Special Action Key\n\nTwo players will need to pick up the red and green rune, they will be the designated tanks for the fight. The boss should be tanked facing away from the group as it does a lot of damage.",
-            "tank": "Use [Issue Challenge](https://wiki.guildwars2.com/wiki/Issue_Challenge) (Special Action Key) to \"taunt\" the boss. First \"taunt\" should be used when the other tank has 3 stacks of [Necrosis](https://wiki.guildwars2.com/wiki/Necrosis). After that, it can be used on cooldown.",
+            "desc": "**Health:** 35 391 600\n**Enrage Timer:** 8 minutes\n**Enrage Effect:** ![Enraged](/961403.png) [Enraged](https://wiki.guildwars2.com/wiki/Enraged_(200%25)) - Increases damage dealt by 200%\n**Fixation Mechanic:** Player that activates the ![Issue Challenge](/1494385.png) [Issue Challenge](https://wiki.guildwars2.com/wiki/Issue_Challenge) Special Action Key\n\nTwo players will need to pick up the red and green rune, they will be the designated tanks for the fight. The boss should be tanked facing away from the group as it does a lot of damage.",
+            "tank": "Use ![Issue Challenge](/1494385.png) [Issue Challenge](https://wiki.guildwars2.com/wiki/Issue_Challenge) (Special Action Key) to \"taunt\" the boss. First \"taunt\" should be used when the other tank has 3 stacks of ![Necrosis](/575632.png) [Necrosis](https://wiki.guildwars2.com/wiki/Necrosis). After that, it can be used on cooldown.",
             "links": "[Wiki](https://wiki.guildwars2.com/wiki/Hall_of_Chains#Soulless_Horror)\n[Snowcrows](https://snowcrows.com/guides/raids/hall-chains/soulless-horror)"
         },
         "River of Souls": {
