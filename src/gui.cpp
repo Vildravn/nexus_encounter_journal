@@ -55,11 +55,11 @@ void ToggleLockWindowEncounterWidget(const char* keybindIdentifier, bool isRelea
 }
 
 void RegisterQuickAccessShortcut() {
-	APIDefs->AddShortcut("SHORTCUT_ENCOUNTER_JOURNAL", "TEX_JOURNAL_ICON", "TEX_JOURNAL_ICON_HOVER", KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL, "Encounter Journal");
+	APIDefs->QuickAccess.Add("SHORTCUT_ENCOUNTER_JOURNAL", "TEX_JOURNAL_ICON", "TEX_JOURNAL_ICON_HOVER", KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL, "Encounter Journal");
 }
 
 void DeregisterQuickAccessShortcut() {
-	APIDefs->RemoveShortcut("SHORTCUT_ENCOUNTER_JOURNAL");
+	APIDefs->QuickAccess.Remove("SHORTCUT_ENCOUNTER_JOURNAL");
 }
 
 inline ImGui::MarkdownImageData ImageCallback( ImGui::MarkdownLinkCallbackData data_ )
@@ -67,7 +67,7 @@ inline ImGui::MarkdownImageData ImageCallback( ImGui::MarkdownLinkCallbackData d
 	std::string image_link = data_.link;
 	image_link = image_link.substr(0, data_.linkLength);
     ImTextureID image = nullptr;
-	Texture* tex_from_url = APIDefs->GetTextureOrCreateFromURL(std::format("TEX_{}", image_link).c_str(), "https://assets.gw2dat.com", image_link.c_str());
+	Texture* tex_from_url = APIDefs->Textures.GetOrCreateFromURL(std::format("TEX_{}", image_link).c_str(), "https://assets.gw2dat.com", image_link.c_str());
 
 	if (tex_from_url != nullptr)
 	{

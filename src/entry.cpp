@@ -129,69 +129,70 @@ void AddonLoad(AddonAPI* aApi)
 	ImGui::SetCurrentContext((ImGuiContext*)APIDefs->ImguiContext); // cast to ImGuiContext*
 	ImGui::SetAllocatorFunctions((void* (*)(size_t, void*))APIDefs->ImguiMalloc, (void(*)(void*, void*))APIDefs->ImguiFree); // on imgui 1.80+
 
-	NexusLink = (NexusLinkData*)APIDefs->GetResource("DL_NEXUS_LINK");
-	MumbleLink = (Mumble::Data*)APIDefs->GetResource("DL_MUMBLE_LINK");
+	NexusLink = (NexusLinkData*)APIDefs->DataLink.Get("DL_NEXUS_LINK");
+	MumbleLink = (Mumble::Data*)APIDefs->DataLink.Get("DL_MUMBLE_LINK");
 
-	APIDefs->GetTextureOrCreateFromResource("TEX_JOURNAL_ICON", IDB_JOURNAL_ICON, hSelf);
-	APIDefs->GetTextureOrCreateFromResource("TEX_JOURNAL_ICON_HOVER", IDB_JOURNAL_ICON_HOVER, hSelf);
+	APIDefs->Textures.GetOrCreateFromResource("TEX_JOURNAL_ICON", IDB_JOURNAL_ICON, hSelf);
+	APIDefs->Textures.GetOrCreateFromResource("TEX_JOURNAL_ICON_HOVER", IDB_JOURNAL_ICON_HOVER, hSelf);
 
-	APIDefs->LoadTextureFromResource("TEX_UNDER_CONSTRUCTION", IDB_UNDER_CONSTRUCTION, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_VALE_GUARDIAN", IDB_VALE_GUARDIAN, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_GORSEVAL", IDB_GORSEVAL, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_SABETHA", IDB_SABETHA, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_SLOTHASOR", IDB_SLOTHASOR, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_ZANE", IDB_ZANE, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_MATTHIAS", IDB_MATTHIAS, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_ESCORT", IDB_ESCORT, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_KEEP_CONSTRUCT", IDB_KEEP_CONSTRUCT, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_TWISTED_CASTLE", IDB_TWISTED_CASTLE, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_XERA", IDB_XERA, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_CAIRN", IDB_CAIRN, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_MURSAAT_OVERSEER", IDB_MURSAAT_OVERSEER, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_SAMAROG", IDB_SAMAROG, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_DEIMOS", IDB_DEIMOS, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_SOULLESS_HORROR", IDB_SOULLESS_HORROR, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_RIVER_OF_SOULS", IDB_RIVER_OF_SOULS, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_EATER_OF_SOULS", IDB_EATER_OF_SOULS, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_BROKEN_KING", IDB_BROKEN_KING, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_EYES_OF_FATE", IDB_EYES_OF_FATE, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_DHUUM", IDB_DHUUM, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_CONJURED_AMALGAMATE", IDB_CONJURED_AMALGAMATE, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_NIKARE", IDB_NIKARE, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_QADIM", IDB_QADIM, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_ADINA", IDB_ADINA, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_SABIR", IDB_SABIR, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_QADIM_THE_PEERLESS", IDB_QADIM_THE_PEERLESS, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_WATCHKNIGHT_MARK_II", IDB_WATCHKNIGHT_MARK_II, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_ICEBROOD_CONSTRUCT", IDB_ICEBROOD_CONSTRUCT, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_KODANS", IDB_KODANS, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_FRAENIR_OF_JORMAG", IDB_FRAENIR_OF_JORMAG, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_BONESKINNER", IDB_BONESKINNER, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_WHISPER_OF_JORMAG", IDB_WHISPER_OF_JORMAG, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_CAPTAIN_MAI_TRIN", IDB_CAPTAIN_MAI_TRIN, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_ANKKA", IDB_ANKKA, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_MINISTER_LI", IDB_MINISTER_LI, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_HARVEST_TEMPLE", IDB_HARVEST_TEMPLE, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_DAGDA", IDB_DAGDA, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_CERUS", IDB_CERUS, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_UNDER_CONSTRUCTION", IDB_UNDER_CONSTRUCTION, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_VALE_GUARDIAN", IDB_VALE_GUARDIAN, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_GORSEVAL", IDB_GORSEVAL, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_SABETHA", IDB_SABETHA, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_SLOTHASOR", IDB_SLOTHASOR, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_ZANE", IDB_ZANE, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_MATTHIAS", IDB_MATTHIAS, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_ESCORT", IDB_ESCORT, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_KEEP_CONSTRUCT", IDB_KEEP_CONSTRUCT, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_TWISTED_CASTLE", IDB_TWISTED_CASTLE, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_XERA", IDB_XERA, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_CAIRN", IDB_CAIRN, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_MURSAAT_OVERSEER", IDB_MURSAAT_OVERSEER, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_SAMAROG", IDB_SAMAROG, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_DEIMOS", IDB_DEIMOS, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_SOULLESS_HORROR", IDB_SOULLESS_HORROR, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_RIVER_OF_SOULS", IDB_RIVER_OF_SOULS, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_EATER_OF_SOULS", IDB_EATER_OF_SOULS, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_BROKEN_KING", IDB_BROKEN_KING, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_EYES_OF_FATE", IDB_EYES_OF_FATE, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_DHUUM", IDB_DHUUM, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_CONJURED_AMALGAMATE", IDB_CONJURED_AMALGAMATE, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_NIKARE", IDB_NIKARE, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_QADIM", IDB_QADIM, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_ADINA", IDB_ADINA, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_SABIR", IDB_SABIR, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_QADIM_THE_PEERLESS", IDB_QADIM_THE_PEERLESS, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_WATCHKNIGHT_MARK_II", IDB_WATCHKNIGHT_MARK_II, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_ICEBROOD_CONSTRUCT", IDB_ICEBROOD_CONSTRUCT, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_KODANS", IDB_KODANS, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_FRAENIR_OF_JORMAG", IDB_FRAENIR_OF_JORMAG, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_BONESKINNER", IDB_BONESKINNER, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_WHISPER_OF_JORMAG", IDB_WHISPER_OF_JORMAG, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_CAPTAIN_MAI_TRIN", IDB_CAPTAIN_MAI_TRIN, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_ANKKA", IDB_ANKKA, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_MINISTER_LI", IDB_MINISTER_LI, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_HARVEST_TEMPLE", IDB_HARVEST_TEMPLE, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_DAGDA", IDB_DAGDA, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_CERUS", IDB_CERUS, hSelf, ReceiveTexture);
 
-	APIDefs->LoadTextureFromResource("TEX_MARKER_ARROW", IDB_MARKER_ARROW, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_MARKER_CIRCLE", IDB_MARKER_CIRCLE, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_MARKER_HEART", IDB_MARKER_HEART, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_MARKER_SPIRAL", IDB_MARKER_SPIRAL, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_MARKER_SQUARE", IDB_MARKER_SQUARE, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_MARKER_STAR", IDB_MARKER_STAR, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_MARKER_TRIANGLE", IDB_MARKER_TRIANGLE, hSelf, ReceiveTexture);
-	APIDefs->LoadTextureFromResource("TEX_MARKER_X", IDB_MARKER_X, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_MARKER_ARROW", IDB_MARKER_ARROW, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_MARKER_CIRCLE", IDB_MARKER_CIRCLE, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_MARKER_HEART", IDB_MARKER_HEART, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_MARKER_SPIRAL", IDB_MARKER_SPIRAL, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_MARKER_SQUARE", IDB_MARKER_SQUARE, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_MARKER_STAR", IDB_MARKER_STAR, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_MARKER_TRIANGLE", IDB_MARKER_TRIANGLE, hSelf, ReceiveTexture);
+	APIDefs->Textures.LoadFromResource("TEX_MARKER_X", IDB_MARKER_X, hSelf, ReceiveTexture);
 
-	APIDefs->RegisterKeybindWithString(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL, ToggleShowWindowEncounterJournal, "CTRL+J");
-	APIDefs->RegisterKeybindWithString(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_WIDGET, ToggleShowWindowEncounterWidget, "CTRL+SHIFT+J");
-	APIDefs->RegisterKeybindWithString(KB_TOGGLE_LOCK_WINDOW_ENCOUNTER_WIDGET, ToggleLockWindowEncounterWidget, "CTRL+ALT+J");
+	APIDefs->InputBinds.RegisterWithString(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL, ToggleShowWindowEncounterJournal, "CTRL+J");
+	APIDefs->InputBinds.RegisterWithString(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_WIDGET, ToggleShowWindowEncounterWidget, "CTRL+SHIFT+J");
+	APIDefs->InputBinds.RegisterWithString(KB_TOGGLE_LOCK_WINDOW_ENCOUNTER_WIDGET, ToggleLockWindowEncounterWidget, "CTRL+ALT+J");
 	RegisterQuickAccessShortcut();
+	APIDefs->UI.RegisterCloseOnEscape(ADDON_NAME, &ShowWindowEncounterJournal);
 
 	// Add an options window and a regular render callback
-	APIDefs->RegisterRender(ERenderType_Render, AddonRender);
-	APIDefs->RegisterRender(ERenderType_OptionsRender, AddonOptions);
+	APIDefs->Renderer.Register(ERenderType_Render, AddonRender);
+	APIDefs->Renderer.Register(ERenderType_OptionsRender, AddonOptions);
 
 	APIDefs->Log(ELogLevel_DEBUG, ADDON_NAME, "<c=#00ff00>Encounter Journal</c> was loaded.");
 }
@@ -203,13 +204,15 @@ void AddonLoad(AddonAPI* aApi)
 void AddonUnload()
 {
 	/* let's clean up after ourselves */
-	APIDefs->DeregisterRender(AddonRender);
-	APIDefs->DeregisterRender(AddonOptions);
+	APIDefs->Renderer.Deregister(AddonRender);
+	APIDefs->Renderer.Deregister(AddonOptions);
 
 	DeregisterQuickAccessShortcut();
-	APIDefs->DeregisterKeybind(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL);
-	APIDefs->DeregisterKeybind(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_WIDGET);
-	APIDefs->DeregisterKeybind(KB_TOGGLE_LOCK_WINDOW_ENCOUNTER_WIDGET);
+	APIDefs->InputBinds.Deregister(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL);
+	APIDefs->InputBinds.Deregister(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_WIDGET);
+	APIDefs->InputBinds.Deregister(KB_TOGGLE_LOCK_WINDOW_ENCOUNTER_WIDGET);
+
+	APIDefs->UI.DeregisterCloseOnEscape(ADDON_NAME);
 
 	texWIP = nullptr;
 	texVG = nullptr;
