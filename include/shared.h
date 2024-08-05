@@ -5,9 +5,10 @@
 #include "mumble/Mumble.h"
 
 extern const char* ADDON_NAME;
-extern AddonAPI *APIDefs;
-extern NexusLinkData *NexusLink;
-extern Mumble::Data *MumbleLink;
+extern AddonAPI* APIDefs;
+extern NexusLinkData* NexusLink;
+extern Mumble::Data* MumbleLink;
+extern Mumble::Identity* MumbleIdentity;
 extern HMODULE hSelf;
 
 extern const char* KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL;
@@ -18,6 +19,8 @@ extern bool ShowWindowEncounterJournal;
 extern bool ShowWindowEncounterWidget;
 extern bool LockWindowEncounterWidget;
 extern bool OnlyShowWidgetInstanced;
+extern bool ShowWidgetBackground;
+extern float WidgetBackgroundOpacity;
 
 extern Texture* texWIP;
 extern Texture* texVG;
@@ -67,5 +70,7 @@ extern Texture* texSquare;
 extern Texture* texStar;
 extern Texture* texTriangle;
 extern Texture* texX;
+
+extern Texture* texWidgetBG;
 
 #endif // !NEXUS_ENCOUNTER_JOURNAL_SHARED_H

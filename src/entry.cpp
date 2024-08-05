@@ -2,6 +2,11 @@
 #include <stdio.h>
 #include <windows.h>
 #include <format>
+#include <filesystem>
+
+#include <fstream>
+#include <iostream>
+#include "nlohmann/json.hpp"
 
 #include "shared.h"
 #include "gui.h"
@@ -10,11 +15,16 @@
 #include "nexus/Nexus.h"
 #include "imgui/imgui.h"
 
+namespace fs = std::filesystem;
+
+using json = nlohmann::json;
+
 /* proto */
 void AddonLoad(AddonAPI* aApi);
 void AddonUnload();
 void AddonRender();
 void AddonOptions();
+void OnMumbleIdentityUpdated(void* aEventArgs);
 
 /* globals */
 AddonDefinition AddonDef = {};
@@ -44,20 +54,18 @@ extern "C" __declspec(dllexport) AddonDefinition* GetAddonDef()
 {
 	AddonDef.Signature = -89350; // set to random unused negative integer
 	AddonDef.APIVersion = NEXUS_API_VERSION;
-	AddonDef.Name = "Encounter Journal (Alpha)";
+	AddonDef.Name = "Encounter Journal (Beta)";
 	AddonDef.Version.Major = 0;
-	AddonDef.Version.Minor = 0;
-	AddonDef.Version.Build = 9;
-	AddonDef.Version.Revision = 1;
+	AddonDef.Version.Minor = 9;
+	AddonDef.Version.Build = 0;
+	AddonDef.Version.Revision = 0;
 	AddonDef.Author = "Ravenheart.8935";
 	AddonDef.Description = "Cliffnotes about dungeon, strike and raid bosses.";
 	AddonDef.Load = AddonLoad;
 	AddonDef.Unload = AddonUnload;
 	AddonDef.Flags = EAddonFlags_None;
-
-	/* not necessary if hosted on Raidcore, but shown anyway for the example also useful as a backup resource */
-	//AddonDef.Provider = EUpdateProvider_GitHub;
-	//AddonDef.UpdateLink = "https://github.com/RaidcoreGG/GW2Nexus-AddonTemplate";
+	//AddonDef.Provider = EUpdateProvider::EUpdateProvider_Direct;
+	//AddonDef.UpdateLink = "https://addons.vildravn.net/encounter_journal/nexus_encounter_journal.dll";
 
 	return &AddonDef;
 }
@@ -115,6 +123,54 @@ void ReceiveTexture(const char* aIdentifier, Texture* aTexture)
 	if (str == "TEX_MARKER_TRIANGLE") texTriangle = aTexture;
 	if (str == "TEX_MARKER_X") texX = aTexture;
 
+	if (str == "TEX_WIDGET_BG") texWidgetBG = aTexture;
+}
+
+void OnMumbleIdentityUpdated(void* aEventArgs)
+{
+	MumbleIdentity = (Mumble::Identity*)aEventArgs;
+}
+
+void SaveSettings()
+{
+	std::string settingsPath = std::format("{}\\settings.json", APIDefs->Paths.GetAddonDirectory(ADDON_NAME));
+	std::ofstream settingsFile(settingsPath);
+
+	if (settingsFile.is_open() && settingsFile.good())
+	{
+		json j_settings = { {"widget_show", ShowWindowEncounterWidget}, {"widget_lock", LockWindowEncounterWidget}, {"widget_instance_only", OnlyShowWidgetInstanced} };
+		settingsFile << j_settings.dump(2) << std::endl;
+		settingsFile.close();
+	}
+	else
+	{
+		APIDefs->Log(ELogLevel_WARNING, ADDON_NAME, "Could not save the settings file!");
+	}
+}
+
+void LoadSettings()
+{
+	std::string settingsPath = std::format("{}\\settings.json", APIDefs->Paths.GetAddonDirectory(ADDON_NAME));
+
+	if (fs::exists(settingsPath))
+	{
+		APIDefs->Log(ELogLevel_DEBUG, ADDON_NAME, std::format("Path {} exists", settingsPath).c_str());
+		std::ifstream settingsFile(settingsPath);
+
+		if (settingsFile.is_open() && settingsFile.good())
+		{
+			json j_settings = json::parse(settingsFile);
+
+			ShowWindowEncounterWidget = j_settings.value("widget_show", true);
+			LockWindowEncounterWidget = j_settings.value("widget_lock", true);
+			OnlyShowWidgetInstanced = j_settings.value("widget_instance_only", true);
+		}
+	}
+	else
+	{
+		APIDefs->Log(ELogLevel_DEBUG, ADDON_NAME, std::format("Settings file does not exist, creating", settingsPath).c_str());
+		SaveSettings();
+	}
 }
 
 ///----------------------------------------------------------------------------------------------------
@@ -131,6 +187,8 @@ void AddonLoad(AddonAPI* aApi)
 
 	NexusLink = (NexusLinkData*)APIDefs->DataLink.Get("DL_NEXUS_LINK");
 	MumbleLink = (Mumble::Data*)APIDefs->DataLink.Get("DL_MUMBLE_LINK");
+
+	APIDefs->Events.Subscribe("EV_MUMBLE_IDENTITY_UPDATED", OnMumbleIdentityUpdated);
 
 	APIDefs->Textures.GetOrCreateFromResource("TEX_JOURNAL_ICON", IDB_JOURNAL_ICON, hSelf);
 	APIDefs->Textures.GetOrCreateFromResource("TEX_JOURNAL_ICON_HOVER", IDB_JOURNAL_ICON_HOVER, hSelf);
@@ -184,15 +242,24 @@ void AddonLoad(AddonAPI* aApi)
 	APIDefs->Textures.LoadFromResource("TEX_MARKER_TRIANGLE", IDB_MARKER_TRIANGLE, hSelf, ReceiveTexture);
 	APIDefs->Textures.LoadFromResource("TEX_MARKER_X", IDB_MARKER_X, hSelf, ReceiveTexture);
 
+	APIDefs->Textures.LoadFromResource("TEX_WIDGET_BG", IDB_WIDGET_BG, hSelf, ReceiveTexture);
+
 	APIDefs->InputBinds.RegisterWithString(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL, ToggleShowWindowEncounterJournal, "CTRL+J");
 	APIDefs->InputBinds.RegisterWithString(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_WIDGET, ToggleShowWindowEncounterWidget, "CTRL+SHIFT+J");
 	APIDefs->InputBinds.RegisterWithString(KB_TOGGLE_LOCK_WINDOW_ENCOUNTER_WIDGET, ToggleLockWindowEncounterWidget, "CTRL+ALT+J");
 	RegisterQuickAccessShortcut();
-	APIDefs->UI.RegisterCloseOnEscape(ADDON_NAME, &ShowWindowEncounterJournal);
+	APIDefs->UI.RegisterCloseOnEscape("Encounter Journal", &ShowWindowEncounterJournal);
 
 	// Add an options window and a regular render callback
 	APIDefs->Renderer.Register(ERenderType_Render, AddonRender);
 	APIDefs->Renderer.Register(ERenderType_OptionsRender, AddonOptions);
+
+	const char* addonPath = APIDefs->Paths.GetAddonDirectory(ADDON_NAME);
+	if (!fs::exists(addonPath))
+	{
+		CreateDirectory(addonPath, NULL);
+	}
+	LoadSettings();
 
 	APIDefs->Log(ELogLevel_DEBUG, ADDON_NAME, "<c=#00ff00>Encounter Journal</c> was loaded.");
 }
@@ -212,7 +279,9 @@ void AddonUnload()
 	APIDefs->InputBinds.Deregister(KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_WIDGET);
 	APIDefs->InputBinds.Deregister(KB_TOGGLE_LOCK_WINDOW_ENCOUNTER_WIDGET);
 
-	APIDefs->UI.DeregisterCloseOnEscape(ADDON_NAME);
+	APIDefs->UI.DeregisterCloseOnEscape("Encounter Journal");
+
+	APIDefs->Events.Unsubscribe("EV_MUMBLE_IDENTITY_UPDATED", OnMumbleIdentityUpdated);
 
 	texWIP = nullptr;
 	texVG = nullptr;
@@ -263,9 +332,13 @@ void AddonUnload()
 	texTriangle = nullptr;
 	texX = nullptr;
 
+	texWidgetBG = nullptr;
+
+	MumbleIdentity = nullptr;
 	MumbleLink = nullptr;
 	NexusLink = nullptr;
 
+	SaveSettings();
 	APIDefs->Log(ELogLevel_DEBUG, ADDON_NAME, "<c=#ff0000>Signing off</c>, it was an honor commander.");
 }
 

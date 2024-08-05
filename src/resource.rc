@@ -134,3 +134,5 @@ IDB_MARKER_X            PNG                     "resources/Commander_x_marker.pn
 IDB_JOURNAL_ICON        PNG                     "resources/Journal_icon.png"
 
 IDB_JOURNAL_ICON_HOVER  PNG                     "resources/Journal_icon_hover.png"
+
+IDB_WIDGET_BG           PNG                     "resources/widget_background.png"

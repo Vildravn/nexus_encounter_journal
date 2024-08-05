@@ -62,6 +62,16 @@ void DeregisterQuickAccessShortcut() {
 	APIDefs->QuickAccess.Remove("SHORTCUT_ENCOUNTER_JOURNAL");
 }
 
+Mumble::EUIScale GetUIScale()
+{
+	if (!MumbleIdentity)
+	{
+		return Mumble::EUIScale::Normal;
+	}
+
+	return MumbleIdentity->UISize;
+}
+
 inline ImGui::MarkdownImageData ImageCallback( ImGui::MarkdownLinkCallbackData data_ )
 {
 	std::string image_link = data_.link;
@@ -128,7 +138,7 @@ void RenderWindowEncounterJournal()
     ImGui::PushFont((ImFont*)NexusLink->FontUI);
 	ImGui::SetNextWindowSize(ImVec2(820, 380), ImGuiCond_FirstUseEver);
 	ImGui::SetNextWindowPos(ImVec2(NexusLink->Width/2 - 820/2, NexusLink->Height/3 - 380/2), ImGuiCond_FirstUseEver); // Center window
-    if (ImGui::Begin(ADDON_NAME, &ShowWindowEncounterJournal, ImGuiWindowFlags_NoCollapse + ImGuiWindowFlags_NoScrollbar + ImGuiWindowFlags_NoScrollWithMouse))
+    if (ImGui::Begin("Encounter Journal", &ShowWindowEncounterJournal, ImGuiWindowFlags_NoCollapse + ImGuiWindowFlags_NoScrollbar + ImGuiWindowFlags_NoScrollWithMouse))
 	{
 		if (ImGui::BeginTable("MainTable", 2))
 		{
@@ -207,8 +217,12 @@ void RenderWindowEncounterJournal()
 				}
 				else
 				{
+					ImGui::PopFont();
+					ImGui::PushFont((ImFont*)NexusLink->FontBig);
 					ImGui::Text(selected_boss_name.c_str());
 					Markdown("***");
+					ImGui::PopFont();
+					ImGui::PushFont((ImFont*)NexusLink->FontUI);
 
 					if (selected_boss.contains("desc"))
 					{
@@ -265,8 +279,36 @@ void RenderWindowEncounterJournal()
     ImGui::PopFont();
 }
 
+void DrawBackground(ImVec2 small_size, ImVec2 normal_size, ImVec2 large_size, ImVec2 larger_size)
+{
+	if (!ShowWidgetBackground) return;
+
+	ImVec2 cur_pos = ImGui::GetCursorPos();
+	ImVec2 bg_size = small_size;
+
+	switch (GetUIScale())
+	{
+		case Mumble::EUIScale::Normal:
+			bg_size = normal_size;
+			break;
+
+		case Mumble::EUIScale::Large:
+			bg_size = large_size;
+			break;
+		
+		case Mumble::EUIScale::Larger:
+			bg_size = larger_size;
+			break;
+	}
+
+	ImGui::Image(texWidgetBG->Resource, bg_size, ImVec2(0, 0), ImVec2(1, 1), ImVec4(1, 1, 1, WidgetBackgroundOpacity));
+	ImGui::SetCursorPos(ImVec2(cur_pos.x + 10, cur_pos.y + 10));
+}
+
 void RenderDhuumTable()
 {
+	DrawBackground(ImVec2(270, 220), ImVec2(280, 220), ImVec2(300, 220), ImVec2(300, 230));
+
 	if (ImGui::BeginTable("Dhuum Table", 3))
 	{
 		ImGui::TableSetupColumn("G1");
@@ -323,6 +365,8 @@ void RenderDhuumTable()
 
 void RenderSabethaTable()
 {
+	DrawBackground(ImVec2(270, 220), ImVec2(280, 220), ImVec2(300, 220), ImVec2(300, 230));
+
 	if (ImGui::BeginTable("Sabetha Table", 2))
 	{
 		ImGui::TableSetupColumn("1,3");
@@ -372,6 +416,8 @@ void RenderSabethaTable()
 
 void RenderTrioTable()
 {
+	DrawBackground(ImVec2(270, 220), ImVec2(280, 220), ImVec2(300, 220), ImVec2(300, 230));
+
 	DrawMarker(Arrow);
 	ImGui::TextOutlined("6:50 - Berg");
 	DrawMarker(Circle);
@@ -400,6 +446,8 @@ void RenderTrioTable()
 
 void RenderSlothTable()
 {
+	DrawBackground(ImVec2(270, 220), ImVec2(280, 220), ImVec2(300, 220), ImVec2(300, 230));
+	
 	if (ImGui::BeginTable("Sloth Table", 2))
 	{
 		ImGui::TableSetupColumn("Time");
@@ -453,16 +501,16 @@ void RenderWidget()
 	{
 		float dist_from_sabetha = GetPlayerDistanceSquaredFromPoint(36651.1, 28924.5);
 		float dist_from_trio = GetPlayerDistanceSquaredFromPoint(35893.1, 29866.6);
-		float dist_from_dhuum = GetPlayerDistanceSquaredFromPoint(53247.4, 32344.7);
+		float dist_from_dhuum = GetPlayerDistanceSquaredFromPoint(53390.7, 32350.9);
 		float dist_from_sloth = GetPlayerDistanceSquaredFromPoint(36297.1, 29445.6);
 		const float dist_cutoff = 25000.0f;
 
 		if (dist_from_sabetha < dist_cutoff) RenderSabethaTable();
 		else if (dist_from_trio < dist_cutoff) RenderTrioTable();
-		//else if (dist_from_dhuum < dist_cutoff) RenderDhuumTable();
-		else if (MumbleLink->Context.MapID == 1264) RenderDhuumTable(); //Workaround until we know the Z value of the PoI
+		else if (dist_from_dhuum < dist_cutoff && MumbleLink->AvatarPosition.Y > 145.0f) RenderDhuumTable();
 		else if (dist_from_sloth < dist_cutoff) RenderSlothTable();
-		else ImGui::TextOutlined("No boss nearby or no widget");
+		//else ImGui::TextOutlined("No boss nearby or no widget");
+		else RenderDhuumTable();
 
 		ImVec2 widgetSize = ImGui::GetWindowSize();
 		ImGui::SetWindowPos("Boss widget", ImVec2(NexusLink->Width/2 - widgetSize.x/2, NexusLink->Height/2 - widgetSize.y/2), ImGuiCond_FirstUseEver);

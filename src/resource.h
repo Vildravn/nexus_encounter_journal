@@ -63,3 +63,4 @@
 #define IDB_MARKER_X                    167
 #define IDB_JOURNAL_ICON                168
 #define IDB_JOURNAL_ICON_HOVER          169
+#define IDB_WIDGET_BG                   170

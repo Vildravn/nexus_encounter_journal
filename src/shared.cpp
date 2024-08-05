@@ -1,9 +1,10 @@
 #include "shared.h"
 
-const char* ADDON_NAME = "Encounter Journal";
+const char* ADDON_NAME = "EncounterJournal";
 AddonAPI* APIDefs			= nullptr;
 NexusLinkData* NexusLink	= nullptr;
 Mumble::Data* MumbleLink	= nullptr;
+Mumble::Identity* MumbleIdentity = nullptr;
 HMODULE hSelf				= nullptr;
 
 const char* KB_TOGGLE_SHOW_WINDOW_ENCOUNTER_JOURNAL = "KB_EJ_TOGGLE_SHOW_JOURNAL";
@@ -14,6 +15,8 @@ bool ShowWindowEncounterJournal = false;
 bool ShowWindowEncounterWidget = true;
 bool LockWindowEncounterWidget = true;
 bool OnlyShowWidgetInstanced = true;
+bool ShowWidgetBackground = true;
+float WidgetBackgroundOpacity = 1.0;
 
 Texture* texWIP = nullptr;
 Texture* texVG = nullptr;
@@ -63,3 +66,5 @@ Texture* texSquare = nullptr;
 Texture* texStar = nullptr;
 Texture* texTriangle = nullptr;
 Texture* texX = nullptr;
+
+Texture* texWidgetBG = nullptr;
