@@ -57,7 +57,7 @@ extern "C" __declspec(dllexport) AddonDefinition* GetAddonDef()
 	AddonDef.Version.Major = 0;
 	AddonDef.Version.Minor = 9;
 	AddonDef.Version.Build = 0;
-	AddonDef.Version.Revision = 1;
+	AddonDef.Version.Revision = 2;
 	AddonDef.Author = "Ravenheart.8935";
 	AddonDef.Description = "Cliffnotes about dungeon, strike and raid bosses.";
 	AddonDef.Load = AddonLoad;
