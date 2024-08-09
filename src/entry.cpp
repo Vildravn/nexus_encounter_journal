@@ -63,8 +63,8 @@ extern "C" __declspec(dllexport) AddonDefinition* GetAddonDef()
 	AddonDef.Load = AddonLoad;
 	AddonDef.Unload = AddonUnload;
 	AddonDef.Flags = EAddonFlags_None;
-	//AddonDef.Provider = EUpdateProvider::EUpdateProvider_Direct;
-	//AddonDef.UpdateLink = "https://addons.vildravn.net/encounter_journal/nexus_encounter_journal.dll";
+	AddonDef.Provider = EUpdateProvider::EUpdateProvider_Direct;
+	AddonDef.UpdateLink = "https://addons.vildravn.net/encounter_journal/nexus_encounter_journal.dll";
 
 	return &AddonDef;
 }
