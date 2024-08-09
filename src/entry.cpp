@@ -1,11 +1,10 @@
-#include <stdint.h>
-#include <stdio.h>
+#include <cstdint>
+#include <cstdio>
 #include <windows.h>
 #include <format>
 #include <filesystem>
 
 #include <fstream>
-#include <iostream>
 #include "nlohmann/json.hpp"
 
 #include "shared.h"
@@ -138,7 +137,7 @@ void SaveSettings()
 
 	if (settingsFile.is_open() && settingsFile.good())
 	{
-		json j_settings = { {"widget_show", ShowWindowEncounterWidget}, {"widget_lock", LockWindowEncounterWidget}, {"widget_instance_only", OnlyShowWidgetInstanced} };
+		json j_settings = { {"widget_show", ShowWindowEncounterWidget}, {"widget_lock", LockWindowEncounterWidget}, {"widget_instance_only", OnlyShowWidgetInstanced}, {"widget_show_bg", ShowWidgetBackground}, {"widget_bg_opacity", WidgetBackgroundOpacity} };
 		settingsFile << j_settings.dump(2) << std::endl;
 		settingsFile.close();
 	}
@@ -164,6 +163,8 @@ void LoadSettings()
 			ShowWindowEncounterWidget = j_settings.value("widget_show", true);
 			LockWindowEncounterWidget = j_settings.value("widget_lock", true);
 			OnlyShowWidgetInstanced = j_settings.value("widget_instance_only", true);
+			ShowWidgetBackground = j_settings.value("widget_show_bg", true);
+			WidgetBackgroundOpacity = j_settings.value("widget_bg_opacity", 1.0);
 		}
 	}
 	else
@@ -257,7 +258,7 @@ void AddonLoad(AddonAPI* aApi)
 	const char* addonPath = APIDefs->Paths.GetAddonDirectory(ADDON_NAME);
 	if (!fs::exists(addonPath))
 	{
-		CreateDirectory(addonPath, NULL);
+		CreateDirectory(addonPath, nullptr);
 	}
 	LoadSettings();
 
@@ -364,4 +365,6 @@ void AddonOptions()
 	//ImGui::SetTooltip("Unlocking the widget lets you move it and change the content.");
 	ImGui::Checkbox("Lock Widget", &LockWindowEncounterWidget);
 	ImGui::Checkbox("Only show widget inside instances", &OnlyShowWidgetInstanced);
+	ImGui::Checkbox("Show Background", &ShowWidgetBackground);
+	ImGui::SliderFloat("Background opacity", &WidgetBackgroundOpacity, 0.0f, 1.0f, "%.1f", 1.0f);
 }

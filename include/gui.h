@@ -18,13 +18,13 @@ void ToggleShowWindowEncounterJournal(const char* keybindIdentifier, bool isRele
 void ToggleShowWindowEncounterWidget(const char* keybindIdentifier, bool isRelease);
 void ToggleLockWindowEncounterWidget(const char* keybindIdentifier, bool isRelease);
 
-void RegisterQuickAccessShortcut(void);
-void DeregisterQuickAccessShortcut(void);
+void RegisterQuickAccessShortcut();
+void DeregisterQuickAccessShortcut();
 
-void RenderWindowEncounterJournal(void);
-void RenderWidget(void);
+void RenderWindowEncounterJournal();
+void RenderWidget();
 
-Texture* GetBossTexture(std::string boss_name);
+Texture* GetBossTexture(const std::string& boss_name);
 void DrawMarker(SquadMarker marker);
 
 #endif // !NEXUS_ENCOUNTER_JOURNAL_GUI_H

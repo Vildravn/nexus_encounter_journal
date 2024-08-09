@@ -6,7 +6,6 @@
 #include "imgui/imgui_markdown.h"
 #include "nlohmann/json.hpp"
 #include "gui.h"
-#include "resource.h"
 #include "shared.h"
 #include "data/encounters.h"
 
@@ -107,7 +106,7 @@ void LinkCallback( ImGui::MarkdownLinkCallbackData data_ )
     std::string url( data_.link, data_.linkLength );
     if( !data_.isImage )
     {
-        ShellExecuteA( NULL, "open", url.c_str(), NULL, NULL, SW_SHOWNORMAL );
+        ShellExecuteA( nullptr, "open", url.c_str(), nullptr, nullptr, SW_SHOWNORMAL );
     }
 }
 
@@ -127,7 +126,7 @@ void MarkdownTooltipCallback( ImGui::MarkdownTooltipCallbackData data_ )
 void Markdown(const std::string& markdown_)
 {
     // You can make your own Markdown function with your prefered string container and markdown config.
-    ImGui::MarkdownConfig mdConfig{ LinkCallback, MarkdownTooltipCallback, ImageCallback, NULL, { { (ImFont*)NexusLink->FontBig, true }, { (ImFont*)NexusLink->FontBig, true }, { (ImFont*)NexusLink->FontUI, false } }, NULL };
+    ImGui::MarkdownConfig mdConfig{ LinkCallback, MarkdownTooltipCallback, ImageCallback, nullptr, { { (ImFont*)NexusLink->FontBig, true }, { (ImFont*)NexusLink->FontBig, true }, { (ImFont*)NexusLink->FontUI, false } }, nullptr};
     ImGui::Markdown( markdown_.c_str(), markdown_.length(), mdConfig );
 }
 
@@ -154,7 +153,7 @@ void RenderWindowEncounterJournal()
 				ImGui::SameLine();
 				filter.Draw("##filter");
 				int index = 0;
-				for (json::iterator it = j_encounters.begin(); it != j_encounters.end(); it++)
+				for (auto it = j_encounters.begin(); it != j_encounters.end(); ++it)
 				{
 					if (filter.IsActive())
 					{
@@ -165,9 +164,9 @@ void RenderWindowEncounterJournal()
 					{
 						json childNode = it.value();
 
-						for (json::iterator childIt = childNode.begin(); childIt != childNode.end(); childIt++, index++)
+						for (auto childIt = childNode.begin(); childIt != childNode.end(); ++childIt, index++)
 						{
-							auto bossName = childIt.key();
+							const std::string& bossName = childIt.key();
 							if (filter.PassFilter(bossName.c_str()))
 							{
 								ImGui::Indent(10.0f);
@@ -497,20 +496,19 @@ void RenderWidget()
 	if (!LockWindowEncounterWidget) widgetFlags = WidgetFlagsUnlocked;
 
 	ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
-	if (ImGui::Begin("Boss widget", NULL, widgetFlags))
+	if (ImGui::Begin("Boss widget", nullptr, widgetFlags))
 	{
 		float dist_from_sabetha = GetPlayerDistanceSquaredFromPoint(36651.1, 28924.5);
 		float dist_from_trio = GetPlayerDistanceSquaredFromPoint(35893.1, 29866.6);
 		float dist_from_dhuum = GetPlayerDistanceSquaredFromPoint(53390.7, 32350.9);
 		float dist_from_sloth = GetPlayerDistanceSquaredFromPoint(36297.1, 29445.6);
-		const float dist_cutoff = 25000.0f;
+		constexpr float dist_cutoff = 25000.0f;
 
 		if (dist_from_sabetha < dist_cutoff) RenderSabethaTable();
 		else if (dist_from_trio < dist_cutoff) RenderTrioTable();
 		else if (dist_from_dhuum < dist_cutoff && MumbleLink->AvatarPosition.Y > 145.0f) RenderDhuumTable();
 		else if (dist_from_sloth < dist_cutoff) RenderSlothTable();
-		//else ImGui::TextOutlined("No boss nearby or no widget");
-		else RenderDhuumTable();
+		else ImGui::TextOutlined("No boss nearby or no widget");
 
 		ImVec2 widgetSize = ImGui::GetWindowSize();
 		ImGui::SetWindowPos("Boss widget", ImVec2(NexusLink->Width/2 - widgetSize.x/2, NexusLink->Height/2 - widgetSize.y/2), ImGuiCond_FirstUseEver);
@@ -521,7 +519,7 @@ void RenderWidget()
 	ImGui::PopFont();
 }
 
-Texture* GetBossTexture(std::string boss_name)
+Texture* GetBossTexture(const std::string& boss_name)
 {
 	if (boss_name == "Vale Guardian") return texVG;
 	else if (boss_name == "Gorseval") return texGors;

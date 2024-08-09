@@ -1,7 +1,7 @@
 #ifndef NEXUS_ENCOUNTER_JOURNAL_ENCOUNTERS_H
 #define NEXUS_ENCOUNTER_JOURNAL_ENCOUNTERS_H
 
-std::string str_encounters_json = R"###({
+inline std::string str_encounters_json = R"###({
     "Spirit Vale": {
         "Vale Guardian": {
             "desc": "**Health:** 22 021 440\n**Enrage Timer:** 8 minutes\n**Enrage Effect:** Gains ![Enraged](/961403.png) [Enraged](https://wiki.guildwars2.com/wiki/Enraged_(200%25)), increasing damage dealt by 200%\n**Fixation Mechanics:** Highest toughness\n\n",
