@@ -34,5 +34,5 @@ include_directories(include)
 # load imgui as a cmake project
 add_subdirectory(src/imgui)
 
-add_library(nexus_encounter_journal SHARED src/entry.cpp)
+add_library(nexus_encounter_journal SHARED src/gui_journal.cpp src/imgui_custom.cpp src/shared.cpp src/entry.cpp)
 target_link_libraries(nexus_encounter_journal imgui)
