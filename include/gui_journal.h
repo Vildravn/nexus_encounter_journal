@@ -21,6 +21,7 @@ extern void RenderJournalStrikeBossMenu(std::string type);
 extern void RenderMainSubmenu();
 extern void RenderRaidSubmenu();
 extern void RenderStrikeSubmenu();
+extern void RenderContent();
 extern void ToggleShowJournalWindow(const char* keybindIdentifier, bool isRelease);
 
 extern std::string selected_zone;

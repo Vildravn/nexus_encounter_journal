@@ -1,9 +1,4 @@
-#ifndef NEXUS_ENCOUNTER_JOURNAL_ENCOUNTERS_H
-#define NEXUS_ENCOUNTER_JOURNAL_ENCOUNTERS_H
-
-#include <string>
-
-inline std::string str_encounters_json = R"###({
+{
   "1062": {
     "name": "Spirit Vale",
     "subtitle": "Wing 1",
@@ -55,6 +50,4 @@ inline std::string str_encounters_json = R"###({
       }
     }
   }
-})###";
-
-#endif // !NEXUS_ENCOUNTER_JOURNAL_ENCOUNTERS_H
+}

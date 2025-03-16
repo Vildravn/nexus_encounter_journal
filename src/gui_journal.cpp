@@ -1,9 +1,15 @@
+#include "format"
 #include "gui_journal.h"
 #include "imgui/imgui.h"
+#include "imgui/imgui_markdown.h"
 #include "data/encounters.h"
+#include "imgui/imgui_stdlib.h"
+#include "nexus/Nexus.h"
 #include "nlohmann/json.hpp"
 #include "imgui_custom.h"
 #include "shared.h"
+#include <cstring>
+#include <string>
 
 using json = nlohmann::ordered_json;
 
@@ -12,7 +18,86 @@ json j_encounters = json::parse(str_encounters_json);
 std::string selected_zone;
 std::string selected_boss;
 std::string selected_strike;
+bool copy_mode = false;
 JournalSubmenu active_screen = JournalSubmenu::Main;
+
+inline ImGui::MarkdownImageData ImageCallback( ImGui::MarkdownLinkCallbackData data_ )
+{
+	std::string image_link = data_.link;
+	image_link = image_link.substr(0, data_.linkLength);
+    ImTextureID image = nullptr;
+	Texture* tex_from_url = APIDefs->Textures.GetOrCreateFromURL(std::format("TEX_{}", image_link).c_str(), "https://assets.gw2dat.com", image_link.c_str());
+
+	if (tex_from_url != nullptr)
+	{
+		image = tex_from_url->Resource;
+	}
+
+    ImGui::MarkdownImageData imageData;
+    imageData.isValid =         true;
+    imageData.useLinkCallback = false;
+    imageData.user_texture_id = image;
+    imageData.size =            ImVec2( 16.0f, 16.0f );
+
+    // For image resize when available size.x > image width, add
+    ImVec2 const contentSize = ImGui::GetContentRegionAvail();
+    if( imageData.size.x > contentSize.x )
+    {
+        float const ratio = imageData.size.y/imageData.size.x;
+        imageData.size.x = contentSize.x;
+        imageData.size.y = contentSize.x*ratio;
+    }
+
+    return imageData;
+}
+
+void LinkCallback( ImGui::MarkdownLinkCallbackData data_ )
+{
+    std::string url( data_.link, data_.linkLength );
+    if( !data_.isImage )
+    {
+        ShellExecuteA( nullptr, "open", url.c_str(), nullptr, nullptr, SW_SHOWNORMAL );
+    }
+}
+
+void MarkdownTooltipCallback( ImGui::MarkdownTooltipCallbackData data_ )
+{
+	std::string url(data_.linkData.link, data_.linkData.linkLength);
+	if( data_.linkData.isImage )
+	{
+		return;
+	}
+	else if (url.find("text:") == 0)
+	{
+		ImGui::SetTooltip( "%s", url.substr(5).c_str() );
+	}
+	else
+	{
+		ImGui::SetTooltip( "Open in browser\n%.*s", data_.linkData.linkLength, data_.linkData.link );
+	}
+}
+
+void Markdown(const std::string& markdown_)
+{
+	ImFont* default_font = ImGui::GetFont();
+    // You can make your own Markdown function with your prefered string container and markdown config.
+    ImGui::MarkdownConfig mdConfig
+	{ 
+		LinkCallback,
+		MarkdownTooltipCallback,
+		ImageCallback,
+		nullptr,
+		{
+			// { (ImFont*)NexusLink->FontBig, true },
+			// { (ImFont*)NexusLink->FontBig, true },
+			// { (ImFont*)NexusLink->FontUI, false }
+			{ default_font, true },
+			{ default_font, true },
+			{ default_font, false }
+		},
+		nullptr};
+    ImGui::Markdown( markdown_.c_str(), markdown_.length(), mdConfig );
+}
 
 void ClearSelections()
 {
@@ -89,16 +174,7 @@ void RenderRaidSubmenu()
 	ImGui::EndChild();
 
 	ImGui::TableNextColumn();
-	ImGui::BeginChild("Content");
-	if (!selected_zone.empty() && !selected_boss.empty())
-	{
-		if (j_encounters[selected_zone]["bosses"][selected_boss].contains("desc"))
-		{
-			std::string desc = j_encounters[selected_zone]["bosses"][selected_boss]["desc"];
-			ImGui::TextWrapped("%s", desc.c_str());
-		}
-	}
-	ImGui::EndChild();
+	RenderContent();
 
 	ImGui::EndTable();
 }
@@ -113,7 +189,7 @@ void RenderStrikeSubmenu()
 	ImGui::BeginChild("Menu");
 	if (selected_strike.empty())
 	{
-		CustomSelectable([]() { active_screen = JournalSubmenu::Main; }, "Back");
+		CustomSelectableBack([]() { active_screen = JournalSubmenu::Main; }, "Back to Menu");
 		CustomSelectable([]() { selected_strike = "ibs_strike"; }, "Icebrood Saga");
 		CustomSelectable([]() { selected_strike = "eod_strike"; }, "End of Dragons");
 		CustomSelectable([]() { selected_strike = "soto_strike"; }, "Secrets of the Obscure");
@@ -125,23 +201,14 @@ void RenderStrikeSubmenu()
 	ImGui::EndChild();
 
 	ImGui::TableNextColumn();
-	ImGui::BeginChild("Content");
-	if (!selected_zone.empty() && !selected_boss.empty())
-	{
-		if (j_encounters[selected_zone]["bosses"][selected_boss].contains("desc"))
-		{
-			std::string desc = j_encounters[selected_zone]["bosses"][selected_boss]["desc"];
-			ImGui::TextWrapped("%s", desc.c_str());
-		}
-	}
-	ImGui::EndChild();
+	RenderContent();
 
 	ImGui::EndTable();
 }
 
 void RenderJournalZoneMenu(std::string type)
 {
-	CustomSelectable([]() { active_screen = JournalSubmenu::Main; }, "Back");
+	CustomSelectableBack([]() { active_screen = JournalSubmenu::Main; }, "Back to Menu");
 	for (auto j = j_encounters.begin(); j != j_encounters.end(); ++j)
 	{
 		auto zone_id = j.key();
@@ -155,7 +222,7 @@ void RenderJournalZoneMenu(std::string type)
 
 void RenderJournalBossMenu()
 {
-	CustomSelectable(ClearSelections, "Back");
+	CustomSelectableBack(ClearSelections, "Back to Raids");
 
 	if (!selected_zone.empty())
 	{
@@ -163,24 +230,99 @@ void RenderJournalBossMenu()
 		for (auto j = bosses.begin(); j != bosses.end(); ++j)
 		{
 			auto boss_name = j.key();
-			CustomSelectable([boss_name]() { selected_boss = boss_name; }, boss_name, selected_boss == boss_name);
+			std::string icon;
+			if (j->contains("icon")) icon = j->at("icon");
+			CustomSelectable([boss_name]() { selected_boss = boss_name; }, boss_name, selected_boss == boss_name, "", icon);
 		}
 	}
 }
 
 void RenderJournalStrikeBossMenu(std::string type)
 {
-	CustomSelectable(ClearSelections, "Back");
+	CustomSelectableBack(ClearSelections, "Back to Strike Missions");
 
 	for (auto j = j_encounters.begin(); j != j_encounters.end(); ++j)
 	{
 		auto zone_id = j.key();
 		std::string boss_name = j->at("name");
 		std::string subtitle;
+		std::string icon_path = std::format("/bosses/{}/icon", boss_name);
+		json::json_pointer icon_ptr (icon_path);
+		std::string icon;
 		if (j->contains("subtitle")) subtitle = j->at("subtitle");
+		if (j->contains(icon_ptr)) icon = j->at(icon_ptr);
 		if (j->at("type") != type) continue;
-		CustomSelectable([zone_id, boss_name]() { selected_zone = zone_id; selected_boss = boss_name; }, boss_name, selected_boss == boss_name, subtitle);
+		CustomSelectable([zone_id, boss_name]() { selected_zone = zone_id; selected_boss = boss_name; }, boss_name, selected_boss == boss_name, subtitle, icon);
 	}
+}
+
+void RenderContent()
+{
+	ImGui::BeginChild("Content");
+	if (!selected_zone.empty() && !selected_boss.empty())
+	{
+        ImGui::Text("%s", selected_boss.c_str());
+        Markdown("***");
+		if (j_encounters[selected_zone]["bosses"][selected_boss].contains("desc"))
+		{
+			// std::string desc = j_encounters[selected_zone]["bosses"][selected_boss]["desc"];
+			// Markdown(desc);
+
+			// if (ImGui::Button("Toggle Copy Mode"))
+			// {
+			// 	//APIDefs->Log(ELogLevel_DEBUG, ADDON_NAME, desc.c_str());
+			// 	copy_mode = !copy_mode;
+			// }
+
+			// if (copy_mode)
+			// {
+			// 	ImGui::InputTextMultiline("##CopyModeInput", &desc, ImVec2(-FLT_MIN, ImGui::GetTextLineHeight() * 16), ImGuiInputTextFlags_ReadOnly);
+			// }
+			// else
+			// {
+			// 	Markdown(desc);
+			// }
+
+			if (ImGui::CollapsingHeader("Raid Leader"))
+			{
+				ImGui::Indent(8.0);
+				ImGui::LabelText("##RLTips", "Designate a tank, some condi dps, blahblah");
+				ImGui::Unindent(8.0);
+			}
+
+			ImGui::NewLine();
+
+			if (ImGui::CollapsingHeader("Tank"))
+			{
+				ImGui::Indent(8.0);
+				ImGui::LabelText("##TankTips", "Tank on the edge, dodge blues.....");
+				ImGui::Unindent(8.0);
+			}
+
+			ImGui::NewLine();
+
+			ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0.077, 1.0, 0.0, 0.310));
+			if (ImGui::CollapsingHeader("Healer"))
+			{
+				ImGui::Indent(8.0);
+				ImGui::LabelText("##HealTips", "Overheal greens...");
+				ImGui::Unindent(8.0);
+			}
+			ImGui::PopStyleColor();
+		}
+		if (j_encounters[selected_zone]["bosses"][selected_boss].contains("links"))
+		{
+			ImGui::NewLine();
+			std::string links = j_encounters[selected_zone]["bosses"][selected_boss]["links"];
+			if (ImGui::CollapsingHeader("Links"))
+			{
+				ImGui::Indent(8.0);
+				Markdown(links);
+				ImGui::Unindent(8.0);
+			}
+		}
+	}
+	ImGui::EndChild();
 }
 
 void ToggleShowJournalWindow(const char* keybindIdentifier, bool isRelease)
