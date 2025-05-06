@@ -71,6 +71,25 @@ void MarkdownTooltipCallback( ImGui::MarkdownTooltipCallbackData data_ )
 	{
 		ImGui::SetTooltip( "%s", url.substr(5).c_str() );
 	}
+	else if (url.find("image:") == 0)
+	{
+		ImTextureID image = nullptr;
+		std::string imageEndpoint = "/2247649.png";
+		//Texture* tex_from_url = APIDefs->Textures.GetOrCreateFromURL(std::format("TEX_{}", imageEndpoint).c_str(), "https://assets.gw2dat.com", imageEndpoint.c_str());
+		const char* addonPath = APIDefs->Paths.GetAddonDirectory(ADDON_NAME);
+		Texture* tex_from_url = APIDefs->Textures.GetOrCreateFromFile("TEX_HORSE", std::format("{}\\horse.png", addonPath).c_str());
+
+        if (tex_from_url != nullptr)
+        {
+            image = tex_from_url->Resource;
+        }
+
+		ImGui::BeginTooltip();
+        ImGui::Image(image, ImVec2(64, 64));
+		ImGui::TextDisabled("A relevant preview goes here");
+		ImGui::TextDisabled("In the meantime, enjoy horse");
+		ImGui::EndTooltip();
+	}
 	else
 	{
 		ImGui::SetTooltip( "Open in browser\n%.*s", data_.linkData.linkLength, data_.linkData.link );
@@ -261,64 +280,58 @@ void RenderContent()
 	ImGui::BeginChild("Content");
 	if (!selected_zone.empty() && !selected_boss.empty())
 	{
+		auto boss_json = j_encounters[selected_zone]["bosses"][selected_boss];
+
         ImGui::Text("%s", selected_boss.c_str());
         Markdown("***");
-		if (j_encounters[selected_zone]["bosses"][selected_boss].contains("desc"))
+
+		if (boss_json.contains("requirements"))
 		{
-			// std::string desc = j_encounters[selected_zone]["bosses"][selected_boss]["desc"];
-			// Markdown(desc);
-
-			// if (ImGui::Button("Toggle Copy Mode"))
-			// {
-			// 	//APIDefs->Log(ELogLevel_DEBUG, ADDON_NAME, desc.c_str());
-			// 	copy_mode = !copy_mode;
-			// }
-
-			// if (copy_mode)
-			// {
-			// 	ImGui::InputTextMultiline("##CopyModeInput", &desc, ImVec2(-FLT_MIN, ImGui::GetTextLineHeight() * 16), ImGuiInputTextFlags_ReadOnly);
-			// }
-			// else
-			// {
-			// 	Markdown(desc);
-			// }
-
-			if (ImGui::CollapsingHeader("Raid Leader"))
-			{
-				ImGui::Indent(8.0);
-				ImGui::LabelText("##RLTips", "Designate a tank, some condi dps, blahblah");
-				ImGui::Unindent(8.0);
-			}
-
-			ImGui::NewLine();
-
-			if (ImGui::CollapsingHeader("Tank"))
-			{
-				ImGui::Indent(8.0);
-				ImGui::LabelText("##TankTips", "Tank on the edge, dodge blues.....");
-				ImGui::Unindent(8.0);
-			}
-
-			ImGui::NewLine();
-
-			ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0.077, 1.0, 0.0, 0.310));
-			if (ImGui::CollapsingHeader("Healer"))
-			{
-				ImGui::Indent(8.0);
-				ImGui::LabelText("##HealTips", "Overheal greens...");
-				ImGui::Unindent(8.0);
-			}
-			ImGui::PopStyleColor();
+			std::string reqs = boss_json["requirements"];
+			Markdown("Requirements");
+			Markdown(reqs);
 		}
-		if (j_encounters[selected_zone]["bosses"][selected_boss].contains("links"))
+
+		if (boss_json.contains("overview"))
 		{
-			ImGui::NewLine();
-			std::string links = j_encounters[selected_zone]["bosses"][selected_boss]["links"];
+			std::string overview = boss_json["overview"];
+			Markdown("Overview");
+			Markdown(overview);
+		}
+
+		if (boss_json.contains("tank"))
+		{
+			std::string tank = boss_json["tank"];
+			if (ImGui::CollapsingHeader("Tanking"))
+			{
+				Markdown(tank);
+			}
+		}
+
+		if (boss_json.contains("heal"))
+		{
+			std::string heal = boss_json["heal"];
+			if (ImGui::CollapsingHeader("Healing"))
+			{
+				Markdown(heal);
+			}
+		}
+
+		if (boss_json.contains("dps"))
+		{
+			std::string dps = boss_json["dps"];
+			if (ImGui::CollapsingHeader("Damage Dealers"))
+			{
+				Markdown(dps);
+			}
+		}
+
+		if (boss_json.contains("links"))
+		{
+			std::string links = boss_json["links"];
 			if (ImGui::CollapsingHeader("Links"))
 			{
-				ImGui::Indent(8.0);
 				Markdown(links);
-				ImGui::Unindent(8.0);
 			}
 		}
 	}
