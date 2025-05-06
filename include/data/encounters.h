@@ -10,9 +10,13 @@ inline std::string str_encounters_json = R"###({
     "type": "raid",
     "bosses": {
       "Vale Guardian": {
-        "desc": "Before the fight:\n  * Designate a Tank, they need to have the highest tougness\n  * Designate a couple condition dps for the Red Guardian\n  * Have boon strip ready for the Blue Guardian\n  * Have some CC ready for breakbars\n\nDuring the fight:\n  * Greens are usually overhealed, Barrier and Protection helps a lot. Otherwise designate 4 people to stand in green circles to negate the damage\n  * Watch out for Blues, they teleport and deal a lot of damage\n  * Knock back or CC red Seekers, they deal AoE damage to the squad\n  * Vale Guardian splits at 66% and 33%, couple conditon dps go to the Red Guardian, the Green Guardian is pulled to the Blue Guardian\n  * After splits, one and then two segments of the arena glow and deal damage. Always tank on the edge of the safe segment",
         "icon": "/1301792.png",
-        "links": "- [Wiki Walkthrough](https://wiki.guildwars2.com/wiki/Spirit_Vale#Vale_Guardian)\n- [Hardstuck Guide](https://hardstuck.gg/gw2/guides/w1-spirit-vale/vale-guardian/)"
+        "requirements": "  * Tank - Highest Toughness\n  * 2 Condition DPS players",
+        "overview": "  * At 66% and 33% the Vale Guardian becomes invulnerable and spawns 3 guardians.\n    * Condition DPS players go to [red](image:Red Guardian), everyone else goes to [blue](text:Blue Guardian) and one ranged player hits [green](text: Green Guardian) to pull it to main group\n  * After 66% the boss starts using [Magic Storm](text:Magic Storm) that needs to be CCed. One section of the area will become [Glowing Section](text:Glowing Section).\n  * After 33% there are 2 [Glowing Section](text:Glowing Section).",
+        "tank": "  * Face boss away from the group\n  * Tank closer to the edge of the line between two sections\n  * After 33% tank closer to the middle to be able to quickly change sections",
+        "heal": "  * Pay attention to the whole arena\n  * Barrier up for or out-heal [Distributed Magic](text:Description for Distributed Magic)",
+        "dps": "  * Sidestep or dodge out of [Unstable Magic Spike](text:Description for Unstable Magic Spike)\n  * Try to push [Seekers](text:Description for Seekers) away from the group\n  * CC Vale Guardian as soon as [Magic Storm](text:Description for Magic Storm) starts",
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/spirit-vale/vale-guardian) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w1-spirit-vale/vale-guardian/) - detailed written guide\n  * [Mukluk](https://www.youtube.com/watch?v=qtzMDCVHlLg) - summarized video guide"
       },
       "Gorseval": {
         "desc": "Health: 21 628 200\nEnrage Timer: 7 minutes\nEnrage Effect: Removes all updrafts and gains [Enraged](https://wiki.guildwars2.com/wiki/Enraged_(200%25)), increasing damage dealt by 200%.\nFixation Mechanics: Highest toughness",
