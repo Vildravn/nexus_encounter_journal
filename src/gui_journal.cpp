@@ -3,7 +3,6 @@
 #include "imgui/imgui.h"
 #include "imgui/imgui_markdown.h"
 #include "data/encounters.h"
-#include "imgui/imgui_stdlib.h"
 #include "nexus/Nexus.h"
 #include "nlohmann/json.hpp"
 #include "imgui_custom.h"
@@ -74,10 +73,7 @@ void MarkdownTooltipCallback( ImGui::MarkdownTooltipCallbackData data_ )
 	else if (url.find("image:") == 0)
 	{
 		ImTextureID image = nullptr;
-		std::string imageEndpoint = "/2247649.png";
-		//Texture* tex_from_url = APIDefs->Textures.GetOrCreateFromURL(std::format("TEX_{}", imageEndpoint).c_str(), "https://assets.gw2dat.com", imageEndpoint.c_str());
-		const char* addonPath = APIDefs->Paths.GetAddonDirectory(ADDON_NAME);
-		Texture* tex_from_url = APIDefs->Textures.GetOrCreateFromFile("TEX_HORSE", std::format("{}\\horse.png", addonPath).c_str());
+		Texture* tex_from_url = APIDefs->Textures.GetOrCreateFromResource("EJ_HORSE", 101, hSelf);
 
         if (tex_from_url != nullptr)
         {
@@ -129,9 +125,9 @@ void RenderJournal()
 {
 	if (!ShowJournalWindow)
 	{
-		/*auto map_id_str = std::to_string(MumbleData->Context.MapID);
+		auto map_id_str = std::to_string(MumbleData->Context.MapID);
 		if (j_encounters.contains(map_id_str)) selected_zone = map_id_str;
-		else selected_zone.clear();*/
+		else selected_zone.clear();
 
 		return;
 	}
@@ -249,7 +245,7 @@ void RenderJournalBossMenu()
 		for (auto j = bosses.begin(); j != bosses.end(); ++j)
 		{
 			auto boss_name = j.key();
-			std::string icon;
+			int icon = 0;
 			if (j->contains("icon")) icon = j->at("icon");
 			CustomSelectable([boss_name]() { selected_boss = boss_name; }, boss_name, selected_boss == boss_name, "", icon);
 		}
@@ -267,7 +263,7 @@ void RenderJournalStrikeBossMenu(std::string type)
 		std::string subtitle;
 		std::string icon_path = std::format("/bosses/{}/icon", boss_name);
 		json::json_pointer icon_ptr (icon_path);
-		std::string icon;
+		int icon = 0;
 		if (j->contains("subtitle")) subtitle = j->at("subtitle");
 		if (j->contains(icon_ptr)) icon = j->at(icon_ptr);
 		if (j->at("type") != type) continue;

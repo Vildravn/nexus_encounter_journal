@@ -4,7 +4,7 @@
 #include "shared.h"
 #include <format>
 
-void CustomSelectable(std::function<void()> on_click, std::string label, bool selected , std::string subtitle, std::string imageEndpoint)
+void CustomSelectable(std::function<void()> on_click, std::string label, bool selected , std::string subtitle, int tex_id)
 {
 	if (ImGui::Selectable(("##" + label).c_str(), selected, 0, ImVec2(0, 32)))
 	{
@@ -12,17 +12,17 @@ void CustomSelectable(std::function<void()> on_click, std::string label, bool se
 	}
 
     ImTextureID image = nullptr;
-    if (!imageEndpoint.empty())
-    {
-        Texture* tex_from_url = APIDefs->Textures.GetOrCreateFromURL(std::format("TEX_{}", imageEndpoint).c_str(), "https://assets.gw2dat.com", imageEndpoint.c_str());
+	if (tex_id > 0)
+	{
+		Texture* tex_from_resource = APIDefs->Textures.GetOrCreateFromResource(std::format("EJ_{}", tex_id).c_str(), tex_id, hSelf);
 
-        if (tex_from_url != nullptr)
-        {
-            image = tex_from_url->Resource;
-        }
-        ImGui::SameLine();
-        ImGui::Image(image, ImVec2(32, 32));
-    }
+		if (tex_from_resource != nullptr)
+		{
+			image = tex_from_resource->Resource;
+		}
+		ImGui::SameLine();
+		ImGui::Image(image, ImVec2(32, 32));
+	}
 
 	ImGui::SameLine();
 	float pos_y = ImGui::GetCursorPosY();

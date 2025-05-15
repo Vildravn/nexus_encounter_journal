@@ -1,0 +1,9 @@
+#include "resource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PNG
+//
+
+IDB_HORSE               PNG                     "data/images/horse.png"
+IDB_TEMP                PNG                     "data/images/temp.png"
