@@ -1010,18 +1010,18 @@ namespace ImGui
         case MarkdownFormatType::LINK:
             if( start_ )
             {
-                ImGui::PushStyleColor( ImGuiCol_Text, ImGui::GetStyle().Colors[ ImGuiCol_ButtonHovered ] );
+                ImGui::PushStyleColor( ImGuiCol_Text, ImGui::GetStyle().Colors[ ImGuiCol_TabActive ] );
             }
             else
             {
                 ImGui::PopStyleColor();
                 if( markdownFormatInfo_.itemHovered )
                 {
-                    ImGui::UnderLine( ImGui::GetStyle().Colors[ ImGuiCol_ButtonHovered ] );
+                    ImGui::UnderLine( ImGui::GetStyle().Colors[ ImGuiCol_TabActive ] );
                 }
                 else
                 {
-                    ImGui::UnderLine( ImGui::GetStyle().Colors[ ImGuiCol_Button ] );
+                    ImGui::UnderLine( ImGui::GetStyle().Colors[ ImGuiCol_TabActive ] );
                 }
             }
             break;
