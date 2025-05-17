@@ -7,7 +7,7 @@
       "Vale Guardian": {
         "icon": 153,
         "requirements": "  * Tank - Highest Toughness\n  * 2 Condition DPS players",
-        "overview": "  * At 66% and 33% the Vale Guardian becomes invulnerable and spawns 3 guardians.\n    * Condition DPS players go to [red](image:Red Guardian), everyone else goes to [blue](text:Blue Guardian) and one ranged player hits [green](text: Green Guardian) to pull it to main group\n  * After 66% the boss starts using [Magic Storm](text:Magic Storm) that needs to be CCed. One section of the area will become [Glowing Section](text:Glowing Section).\n  * After 33% there are 2 [Glowing Section](text:Glowing Section).",
+        "overview": "  * At 66% and 33% the Vale Guardian becomes invulnerable and spawns 3 guardians.\n    * Condition DPS players go to [red](image:Red Guardian), everyone else goes to [blue](image:Blue Guardian) and one ranged player hits [green](image: Green Guardian) to pull it to main group\n  * After 66% the boss starts using [Magic Storm](text:Magic Storm) that needs to be CCed. One section of the area will become [Glowing Section](text:Glowing Section).\n  * After 33% there are 2 [Glowing Section](text:Glowing Section).",
         "tank": "  * Face boss away from the group\n  * Tank closer to the edge of the line between two sections\n  * After 33% tank closer to the middle to be able to quickly change sections",
         "heal": "  * Pay attention to the whole arena\n  * Barrier up for or out-heal [Distributed Magic](text:Description for Distributed Magic)",
         "dps": "  * Sidestep or dodge out of [Unstable Magic Spike](text:Description for Unstable Magic Spike)\n  * Try to push [Seekers](text:Description for Seekers) away from the group\n  * CC Vale Guardian as soon as [Magic Storm](text:Description for Magic Storm) starts",
@@ -16,28 +16,28 @@
       "Spirit Woods": {
         "icon": 102,
         "requirements": "  * Glider Basic Mastery\n  * Mesmer Portals - useful but not required\n  * Superspeed - Useful but not requred ",
-        "overview": " * Closing Rifts - Run in and clear the arena, close 20 rifts by moving fast in the [Spectral Rifts](image: Rift), mesmer portals help and [Adrenaline Mushrooms](image: shrrom locations) can be used to refresh Mesmer Portals \n * Escaping the Spirits - Group up on [Edge] (image: jump spot) and jump in together with gliders, Healers and BoonDPS stay and close rifts, while DPS players run ahead to destroy [Eternal Barriers](image: wall). After last jump Mesmer can place portal on first Rift and double blink towards wall to skip second Rift while the rest of the group stays on the first one.\n * Standing on Pressure Plates - have 5 players step on 5 [Pressure plates](image: SC pic) at the same time to open the final gate. ",
-        "heal": " * During second mini game stay behind on Rifts with BoonDPS's. Have movements speed boons to move faster towards next rift. ",
-        "dps": " * Kill adds and champs that spawn around you.\n * Move forwards towards wall to destroy them and let the party move on. ",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/spirit-vale/spirit-woodsl) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w1-spirit-vale/spirit-woods/) - detailed written guide\n  * [Mukluk](https://youtu.be/Ni_-HkRtmm4) - summarized video guide "
+        "overview": "  * Closing Rifts - Run in and clear the arena, close 20 rifts by moving fast in the [Spectral Rifts](image: Rift), mesmer portals help and [Adrenaline Mushrooms](image: shrrom locations) can be used to refresh Mesmer Portals \n  * Escaping the Spirits - Group up on [Edge] (image: jump spot) and jump in together with gliders, Healers and BoonDPS stay and close rifts, while DPS players run ahead to destroy [Eternal Barriers](image: wall). After last jump Mesmer can place portal on first Rift and double blink towards wall to skip second Rift while the rest of the group stays on the first one.\n  * Standing on Pressure Plates - have 5 players step on 5 [Pressure plates](image: SC pic) at the same time to open the final gate. ",
+        "heal": "  * During second mini game stay behind on Rifts with BoonDPS's. Have movements speed boons to move faster towards next rift. ",
+        "dps": "  * Kill adds and champs that spawn around you.\n  * Move forwards towards wall to destroy them and let the party move on. ",
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/spirit-vale/spirit-woodsl) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w1-spirit-vale/spirit-woods/) - detailed written guide\n  * [Mukluk](https://youtu.be/Ni_-HkRtmm4) - summarized video guide "
       },
       "Gorseval the Multifarious": {
         "icon": 128,
-        "requirements": " * Tank - Highest Toughness\n  * Soft CC for [Charged Souls/Adds] (image: Charged soul) ",
-        "overview": " * The boss uses 3 attacks during phase 1:\n  - [Spectral Impact('Slam')](image: Slam) - attacking the tank, does Knockback, can be ignored with stability\n  -  [Ghastly Rampage('Rampage')](image: gooey arena) - boss gets CC bar, starts to slam the ground focusing the tank, black energy spawns around the boss that deals heavy dmg. Use slow CC to maximize dmg dealt to the boss\n - [World Eater](image: boss attack) - boss charges an attacks that insta kills the whole squad. Intended way of dealing with the mechanic is to break wind wall and use updraft until mechanic is over, alternatively have enough dmg to phase the boss to 66%/33% before he begins to charge the attack or before he finishes the charge.\n *  At 66% and 33% Gorseval becomes invulnerable and spawns 4 Charged souls. \n  -  Subs split and quickly take care of the adds. Apply some ranged soft CC on the add further from your sub.\n  *  After 66% the boss starts using [Spectral Darkness('Orbs')](image: Orbs) gives 10 stacks of a debuf that halves dmg done and doubles dmg taken, Orbs can be destroyed by ranged players. Debuf can be removed by collecting 2 small golden orbs (IMG) \n *  After 33% the boss also uses [Ghastly Prison('Eggs')](image: eggs) - Orange AoE under every player, dodge out of it. ",
-        "tank": " * face boss away from group \n * tank in the center of the room  ",
-        "heal": " * Provide Stability for 'Slam' attack\n * If possible bring soft CC for second add your sub is responsible for during split phases  ",
-        "dps": " * Sidestep or dodge out of 'Egg' \n  * If possible bring soft CC for second add your sub is responsible for during split phases  \n * CC boss when needed and have enough DPS to skip mechanics ",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/spirit-vale/gorseval) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w1-spirit-vale/gorseval/) - detailed written guide\n  * [Mukluk](https://youtu.be/B9qbuP9kv4Q) - summarized video guide "
+        "requirements": "  * Tank - Highest Toughness\n  * Soft CC for [Charged Souls/Adds] (image: Charged soul) ",
+        "overview": "  * The boss uses 3 attacks during phase 1:\n    * [Spectral Impact('Slam')](image: Slam) - attacking the tank, does Knockback, can be ignored with stability\n    * [Ghastly Rampage('Rampage')](image: gooey arena) - boss gets CC bar, starts to slam the ground focusing the tank, black energy spawns around the boss that deals heavy dmg. Use slow CC to maximize dmg dealt to the boss\n    * [World Eater](image: boss attack) - boss charges an attacks that insta kills the whole squad. Intended way of dealing with the mechanic is to break wind wall and use updraft until mechanic is over, alternatively have enough dmg to phase the boss to 66%/33% before he begins to charge the attack or before he finishes the charge.\n  * At 66% and 33% Gorseval becomes invulnerable and spawns 4 Charged souls. \n    * Subs split and quickly take care of the adds. Apply some ranged soft CC on the add further from your sub.\n  *  After 66% the boss starts using [Spectral Darkness('Orbs')](image: Orbs) gives 10 stacks of a debuf that halves dmg done and doubles dmg taken, Orbs can be destroyed by ranged players. Debuf can be removed by collecting 2 small golden orbs (IMG) \n  * After 33% the boss also uses [Ghastly Prison('Eggs')](image: eggs) - Orange AoE under every player, dodge out of it. ",
+        "tank": "  * face boss away from group \n  * tank in the center of the room  ",
+        "heal": "  * Provide Stability for 'Slam' attack\n  * If possible bring soft CC for second add your sub is responsible for during split phases  ",
+        "dps": "  * Sidestep or dodge out of 'Egg' \n  * If possible bring soft CC for second add your sub is responsible for during split phases  \n  * CC boss when needed and have enough DPS to skip mechanics ",
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/spirit-vale/gorseval) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w1-spirit-vale/gorseval/) - detailed written guide\n  * [Mukluk](https://youtu.be/B9qbuP9kv4Q) - summarized video guide "
       },
       "Sabetha the Saboteur": {
         "icon": 144,
-        "requirements": "* Flak kite -Stay away from boss to kite [Flak Shot](image: flaks), Sometimes also kites [Sapper Bomb](image: green bomb), that needs to be thrown at the Cannon people on the correct cannons.\n * 2 cannon killers (dedicating a backup or 2 is always useful for worst case scenarios) - DPS players go to appropriate launch pad and kill cannon as fast as possible when they go up the cannon platform.  Needs to have [Updraft Use Mastery](??link??),[ Explosive Launch mastery](??link??)\n Useful, but not requred: 2 [time bomb](image: time bombs) kites - can be done by anyone by staying in Sebatha’s hitbox. When one gets bomb they take it out of the group to lower pressure on healers. ",
+        "requirements": "  * Flak kite -Stay away from boss to kite [Flak Shot](image: flaks), Sometimes also kites [Sapper Bomb](image: green bomb), that needs to be thrown at the Cannon people on the correct cannons.\n  * 2 cannon killers (dedicating a backup or 2 is always useful for worst case scenarios) - DPS players go to appropriate launch pad and kill cannon as fast as possible when they go up the cannon platform.  Needs to have [Updraft Use Mastery](??link??),[ Explosive Launch mastery](??link??)\n  * Useful, but not requred: 2 [time bomb](image: time bombs) kites - can be done by anyone by staying in Sebatha’s hitbox. When one gets bomb they take it out of the group to lower pressure on healers. ",
         "overview": "",
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/spirit-vale/sabetha) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w1-spirit-vale/sabetha-the-saboteur/) - detailed written guide\n  * [Mukluk](https://youtu.be/4bqwSrZ2Sr4) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/spirit-vale/sabetha) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w1-spirit-vale/sabetha-the-saboteur/) - detailed written guide\n  * [Mukluk](https://youtu.be/4bqwSrZ2Sr4) - summarized video guide "
       }
     }
   },
@@ -53,7 +53,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/salvation-pass/slothasor) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w2-salvation-pass/slothasor/) - detailed written guide\n  * [Mukluk](https://youtu.be/WIBTTAPd3ME) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/salvation-pass/slothasor) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w2-salvation-pass/slothasor/) - detailed written guide\n  * [Mukluk](https://youtu.be/WIBTTAPd3ME) - summarized video guide "
       },
       "Prison Camp": {
         "icon": 157,
@@ -62,7 +62,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/salvation-pass/bandit-trio) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w2-salvation-pass/bandit-trio/) - detailed written guide\n  * [Mukluk]https://youtu.be/ncVYseut8ag) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/salvation-pass/bandit-trio) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w2-salvation-pass/bandit-trio/) - detailed written guide\n  * [Mukluk](https://youtu.be/ncVYseut8ag ) - summarized video guide "
       },
       "Matthias Gabrel": {
         "icon": 136,
@@ -71,7 +71,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows]https://snowcrows.com/guides/raids/salvation-pass/matthias-gabrel) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w2-salvation-pass/matthias-gabrel/) - detailed written guide\n  * [Mukluk](https://youtu.be/q99ocDpSnAI) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/salvation-pass/matthias-gabrel) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w2-salvation-pass/matthias-gabrel/) - detailed written guide\n  * [Mukluk](https://youtu.be/q99ocDpSnAI) - summarized video guide "
       }
     }
   },
@@ -87,7 +87,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/stronghold-faithful/siege-the-strongholdl) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w3-stronghold-of-the-faithful/escort/) - detailed written guide\n  * [Mukluk](https://youtu.be/WFwcnj74lwU) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/stronghold-faithful/siege-the-strongholdl) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w3-stronghold-of-the-faithful/escort/) - detailed written guide\n  * [Mukluk](https://youtu.be/WFwcnj74lwU) - summarized video guide "
       },
       " Keep Construct": {
         "icon": 132,
@@ -96,7 +96,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/stronghold-faithful/keep-construct) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w3-stronghold-of-the-faithful/keep-construct/) - detailed written guide\n  * [Mukluk]https://youtu.be/QIdzfDtxaFQ) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/stronghold-faithful/keep-construct) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w3-stronghold-of-the-faithful/keep-construct/) - detailed written guide\n  * [Mukluk](https://youtu.be/QIdzfDtxaFQ ) - summarized video guide "
       },
       "Twisted Castle": {
         "icon": 152,
@@ -105,7 +105,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/stronghold-faithful/twisted-castle) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w3-stronghold-of-the-faithful/twisted-castle/) - detailed written guide\n  * [Mukluk](https://youtu.be/mRwLCQ7rUTw) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/stronghold-faithful/twisted-castle) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w3-stronghold-of-the-faithful/twisted-castle/) - detailed written guide\n  * [Mukluk](https://youtu.be/mRwLCQ7rUTw) - summarized video guide "
       },
       "Xera": {
         "icon": 156,
@@ -114,7 +114,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/stronghold-faithful/xera) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w3-stronghold-of-the-faithful/xera/) - detailed written guide\n  * [Mukluk](https://youtu.be/Iggsq-f3yBw) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/stronghold-faithful/xera) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w3-stronghold-of-the-faithful/xera/) - detailed written guide\n  * [Mukluk](https://youtu.be/Iggsq-f3yBw) - summarized video guide "
       }
     }
   },
@@ -130,7 +130,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/bastion-penitent/cairn-the-indomitable) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w4-bastion-of-the-penitent/cairn-the-indomitable/) - detailed written guide\n  * [Mukluk](https://youtu.be/zPfLE1wwWkw) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/bastion-penitent/cairn-the-indomitable) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w4-bastion-of-the-penitent/cairn-the-indomitable/) - detailed written guide\n  * [Mukluk](https://youtu.be/zPfLE1wwWkw) - summarized video guide "
       },
       " Mursaat Overseer": {
         "icon": 138,
@@ -139,7 +139,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/bastion-penitent/mursaat-overseer) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w4-bastion-of-the-penitent/mursaat-overseer/) - detailed written guide\n  * [Mukluk](https://youtu.be/iHMzAPWoLDU) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/bastion-penitent/mursaat-overseer) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w4-bastion-of-the-penitent/mursaat-overseer/) - detailed written guide\n  * [Mukluk](https://youtu.be/iHMzAPWoLDU) - summarized video guide "
       },
       "Samarog": {
         "icon": 146,
@@ -148,7 +148,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/bastion-penitent/samarog) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w4-bastion-of-the-penitent/samarog/) - detailed written guide\n  * [Mukluk](https://youtu.be/pLudL0RBgf0) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/bastion-penitent/samarog) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w4-bastion-of-the-penitent/samarog/) - detailed written guide\n  * [Mukluk](https://youtu.be/pLudL0RBgf0) - summarized video guide "
       },
       "Deimos": {
         "icon": 116,
@@ -157,7 +157,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/bastion-penitent/deimos) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w4-bastion-of-the-penitent/deimos/) - detailed written guide\n  * [Mukluk](https://youtu.be/gW5HH36X3zU) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/bastion-penitent/deimos) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w4-bastion-of-the-penitent/deimos/) - detailed written guide\n  * [Mukluk](https://youtu.be/gW5HH36X3zU) - summarized video guide "
       }
     }
   },
@@ -173,7 +173,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/hall-chains/soulless-horror) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w5-hall-of-chains/soulless-horror/) - detailed written guide\n  * [Mukluk](https://youtu.be/Nw6D9_RcJhs) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/hall-chains/soulless-horror) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w5-hall-of-chains/soulless-horror/) - detailed written guide\n  * [Mukluk](https://youtu.be/Nw6D9_RcJhs) - summarized video guide "
       },
       "River of Souls": {
         "icon": 143,
@@ -182,7 +182,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/hall-chains/river-of-souls) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w5-hall-of-chains/river-of-souls/) - detailed written guide\n  * [Mukluk](https://youtu.be/-84PZQGCmyI) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/hall-chains/river-of-souls) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w5-hall-of-chains/river-of-souls/) - detailed written guide\n  * [Mukluk](https://youtu.be/-84PZQGCmyI) - summarized video guide "
       },
       "Statues of Grenth": {
         "icon": 125,
@@ -191,7 +191,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/hall-chains/statues-of-grenth) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w5-hall-of-chains/statues-of-grenth/) - detailed written guide\n  * [Mukluk](https://youtu.be/cKUcf_ez9Ec) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/hall-chains/statues-of-grenth) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w5-hall-of-chains/statues-of-grenth/) - detailed written guide\n  * [Mukluk](https://youtu.be/cKUcf_ez9Ec) - summarized video guide "
       },
       "Dhuum": {
         "icon": 117,
@@ -200,7 +200,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/hall-chains/dhuum) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w5-hall-of-chains/dhuum/) - detailed written guide\n  * [Mukluk](https://youtu.be/5gFxLKJI9ds) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/hall-chains/dhuum) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w5-hall-of-chains/dhuum/) - detailed written guide\n  * [Mukluk](https://youtu.be/5gFxLKJI9ds) - summarized video guide "
       }
     }
   },
@@ -216,7 +216,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/mythwright-gambit/conjured-amalgamate - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w6-mythwright-gambit/conjured-amalgamate/) - detailed written guide\n  * [Mukluk](https://youtu.be/B7VQAZuV-6o) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/mythwright-gambit/conjured-amalgamate ) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w6-mythwright-gambit/conjured-amalgamate/) - detailed written guide\n  * [Mukluk](https://youtu.be/B7VQAZuV-6o) - summarized video guide "
       },
       "Sorting and Appraisal": {
         "icon": 102,
@@ -225,7 +225,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/mythwright-gambit/sorting-appraisal) - detailed written guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/mythwright-gambit/sorting-appraisal) - detailed written guide "
       },
       "Twin Largos": {
         "icon": 140,
@@ -234,7 +234,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/mythwright-gambit/twin-largos) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w6-mythwright-gambit/twin-largos/) - detailed written guide\n  * [Mukluk](https://youtu.be/RUQQhyE_YiA) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/mythwright-gambit/twin-largos) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w6-mythwright-gambit/twin-largos/) - detailed written guide\n  * [Mukluk](https://youtu.be/RUQQhyE_YiA) - summarized video guide "
       },
       "Qadim ": {
         "icon": 141,
@@ -243,7 +243,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/mythwright-gambit/qadim) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w6-mythwright-gambit/qadim/) - detailed written guide\n  * [Mukluk](https://youtu.be/nU_yQtk_8oo) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/mythwright-gambit/qadim) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w6-mythwright-gambit/qadim/) - detailed written guide\n  * [Mukluk](https://youtu.be/nU_yQtk_8oo) - summarized video guide "
       }
     }
   },
@@ -259,7 +259,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/key-ahdashim/gates-of-ahdashim) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w7-key-of-ahdashim/gate/) - detailed written guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/key-ahdashim/gates-of-ahdashim) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w7-key-of-ahdashim/gate/) - detailed written guide "
       },
       "Cardinal Sabir": {
         "icon": 145,
@@ -268,7 +268,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/key-ahdashim/cardinal-sabir) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w7-key-of-ahdashim/adina/) - detailed written guide\n  * [Mukluk]https://youtu.be/jwjqrsBQhEo) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/key-ahdashim/cardinal-sabir) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w7-key-of-ahdashim/adina/) - detailed written guide\n  * [Mukluk](https://youtu.be/jwjqrsBQhEo ) - summarized video guide "
       },
       "Cardinal Adina": {
         "icon": 103,
@@ -277,7 +277,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/key-ahdashim/cardinal-adina) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w7-key-of-ahdashim/sabir/) - detailed written guide\n  * [Mukluk](https://youtu.be/T_RwWm0Jj4k) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/key-ahdashim/cardinal-adina) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w7-key-of-ahdashim/sabir/) - detailed written guide\n  * [Mukluk](https://youtu.be/T_RwWm0Jj4k) - summarized video guide "
       },
       "Qadim the Peerless": {
         "icon": 142,
@@ -286,7 +286,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Snowcrows](https://snowcrows.com/guides/raids/key-ahdashim/qadim-the-peerless) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w7-key-of-ahdashim/qadim-the-peerless/) - detailed written guide\n  * [Mukluk](https://youtu.be/v1ZFeRot8zg) - summarized video guide "
+        "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/key-ahdashim/qadim-the-peerless) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w7-key-of-ahdashim/qadim-the-peerless/) - detailed written guide\n  * [Mukluk](https://youtu.be/v1ZFeRot8zg) - summarized video guide "
       }
     }
   },
@@ -302,7 +302,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Mukluk](https://youtu.be/A6FJfTURwsw) - summarized video guide "
+        "links": "  * [Mukluk](https://youtu.be/A6FJfTURwsw) - summarized video guide "
       },
       "Decima, the Stormsinger": {
         "icon": 102,
@@ -311,7 +311,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Hardstuck](https://hardstuck.gg/gw2/guides/w8-mount-balrior/decima-the-stormsinger/) - detailed written guide\n  * [Mukluk](https://youtu.be/bkpR8ftEojY) - summarized video guide "
+        "links": "  * [Hardstuck](https://hardstuck.gg/gw2/guides/w8-mount-balrior/decima-the-stormsinger/) - detailed written guide\n  * [Mukluk](https://youtu.be/bkpR8ftEojY) - summarized video guide "
       },
       "Ura, the Steamshrieker": {
         "icon": 102,
@@ -320,7 +320,7 @@
         "tank": "",
         "heal": "",
         "dps": "",
-        "links": " * [Mukluk](https://youtu.be/zu2ps3YZtpE) - summarized video guide "
+        "links": "  * [Mukluk](https://youtu.be/zu2ps3YZtpE) - summarized video guide "
       }
     }
   },
