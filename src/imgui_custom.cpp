@@ -36,6 +36,7 @@ void CustomSelectable(std::function<void()> on_click, std::string label, bool se
 		ImGui::Indent(indent);
 		ImGui::TextDisabled("%s", subtitle.c_str());
 		ImGui::Unindent(indent);
+		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 12.0f);
 	}
 }
 
