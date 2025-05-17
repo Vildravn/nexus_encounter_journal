@@ -205,6 +205,8 @@ void RenderStrikeSubmenu()
 	if (selected_strike.empty())
 	{
 		CustomSelectableBack([]() { active_screen = JournalSubmenu::Main; }, "Back to Menu");
+		CustomSelectable([]() { selected_strike = "s1_strike"; }, "Living World Season 1");
+		CustomSelectable([]() { selected_strike = "wintersday_strike"; }, "Wintersday");
 		CustomSelectable([]() { selected_strike = "ibs_strike"; }, "Icebrood Saga");
 		CustomSelectable([]() { selected_strike = "eod_strike"; }, "End of Dragons");
 		CustomSelectable([]() { selected_strike = "soto_strike"; }, "Secrets of the Obscure");
