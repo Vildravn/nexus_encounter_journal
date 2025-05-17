@@ -8,11 +8,14 @@
 #include "imgui_custom.h"
 #include "shared.h"
 #include <cstring>
+#include <fstream>
 #include <string>
 
 using json = nlohmann::ordered_json;
 
-json j_encounters = json::parse(str_encounters_json);
+std::ifstream ifs(".\\addons\\EncounterJournal\\encounters.json");
+json j_encounters = json::parse(ifs);
+//json j_encounters = json::parse(str_encounters_json);
 
 std::string selected_zone;
 std::string selected_boss;
@@ -25,7 +28,7 @@ inline ImGui::MarkdownImageData ImageCallback( ImGui::MarkdownLinkCallbackData d
 	std::string image_link = data_.link;
 	image_link = image_link.substr(0, data_.linkLength);
 	ImTextureID image = nullptr;
-	Texture* tex_from_url = APIDefs->Textures.GetOrCreateFromURL(std::format("TEX_{}", image_link).c_str(), "https://assets.gw2dat.com", image_link.c_str());
+	Texture* tex_from_url = APIDefs->Textures.GetOrCreateFromURL(std::format("EJ_{}", image_link).c_str(), "https://assets.gw2dat.com", image_link.c_str());
 
 	if (tex_from_url != nullptr)
 	{
