@@ -24,7 +24,7 @@ inline ImGui::MarkdownImageData ImageCallback( ImGui::MarkdownLinkCallbackData d
 {
 	std::string image_link = data_.link;
 	image_link = image_link.substr(0, data_.linkLength);
-    ImTextureID image = nullptr;
+	ImTextureID image = nullptr;
 	Texture* tex_from_url = APIDefs->Textures.GetOrCreateFromURL(std::format("TEX_{}", image_link).c_str(), "https://assets.gw2dat.com", image_link.c_str());
 
 	if (tex_from_url != nullptr)
@@ -32,31 +32,31 @@ inline ImGui::MarkdownImageData ImageCallback( ImGui::MarkdownLinkCallbackData d
 		image = tex_from_url->Resource;
 	}
 
-    ImGui::MarkdownImageData imageData;
-    imageData.isValid =         true;
-    imageData.useLinkCallback = false;
-    imageData.user_texture_id = image;
-    imageData.size =            ImVec2( 16.0f, 16.0f );
+	ImGui::MarkdownImageData imageData;
+	imageData.isValid =         true;
+	imageData.useLinkCallback = false;
+	imageData.user_texture_id = image;
+	imageData.size =            ImVec2( 16.0f, 16.0f );
 
-    // For image resize when available size.x > image width, add
-    ImVec2 const contentSize = ImGui::GetContentRegionAvail();
-    if( imageData.size.x > contentSize.x )
-    {
-        float const ratio = imageData.size.y/imageData.size.x;
-        imageData.size.x = contentSize.x;
-        imageData.size.y = contentSize.x*ratio;
-    }
+	// For image resize when available size.x > image width, add
+	ImVec2 const contentSize = ImGui::GetContentRegionAvail();
+	if( imageData.size.x > contentSize.x )
+	{
+		float const ratio = imageData.size.y/imageData.size.x;
+		imageData.size.x = contentSize.x;
+		imageData.size.y = contentSize.x*ratio;
+	}
 
-    return imageData;
+	return imageData;
 }
 
 void LinkCallback( ImGui::MarkdownLinkCallbackData data_ )
 {
-    std::string url( data_.link, data_.linkLength );
-    if( !data_.isImage )
-    {
-        ShellExecuteA( nullptr, "open", url.c_str(), nullptr, nullptr, SW_SHOWNORMAL );
-    }
+	std::string url( data_.link, data_.linkLength );
+	if( !data_.isImage )
+	{
+		ShellExecuteA( nullptr, "open", url.c_str(), nullptr, nullptr, SW_SHOWNORMAL );
+	}
 }
 
 void MarkdownTooltipCallback( ImGui::MarkdownTooltipCallbackData data_ )
@@ -75,13 +75,13 @@ void MarkdownTooltipCallback( ImGui::MarkdownTooltipCallbackData data_ )
 		ImTextureID image = nullptr;
 		Texture* tex_from_url = APIDefs->Textures.GetOrCreateFromResource("EJ_HORSE", 101, hSelf);
 
-        if (tex_from_url != nullptr)
-        {
-            image = tex_from_url->Resource;
-        }
+		if (tex_from_url != nullptr)
+		{
+			image = tex_from_url->Resource;
+		}
 
 		ImGui::BeginTooltip();
-        ImGui::Image(image, ImVec2(64, 64));
+		ImGui::Image(image, ImVec2(64, 64));
 		ImGui::TextDisabled("A relevant preview goes here");
 		ImGui::TextDisabled("In the meantime, enjoy horse");
 		ImGui::EndTooltip();
@@ -95,8 +95,8 @@ void MarkdownTooltipCallback( ImGui::MarkdownTooltipCallbackData data_ )
 void Markdown(const std::string& markdown_)
 {
 	ImFont* default_font = ImGui::GetFont();
-    // You can make your own Markdown function with your prefered string container and markdown config.
-    ImGui::MarkdownConfig mdConfig
+	// You can make your own Markdown function with your prefered string container and markdown config.
+	ImGui::MarkdownConfig mdConfig
 	{ 
 		LinkCallback,
 		MarkdownTooltipCallback,
@@ -111,7 +111,7 @@ void Markdown(const std::string& markdown_)
 			{ default_font, false }
 		},
 		nullptr};
-    ImGui::Markdown( markdown_.c_str(), markdown_.length(), mdConfig );
+	ImGui::Markdown( markdown_.c_str(), markdown_.length(), mdConfig );
 }
 
 void ClearSelections()
@@ -278,8 +278,8 @@ void RenderContent()
 	{
 		auto boss_json = j_encounters[selected_zone]["bosses"][selected_boss];
 
-        ImGui::Text("%s", selected_boss.c_str());
-        Markdown("***");
+		ImGui::Text("%s", selected_boss.c_str());
+		Markdown("***");
 
 		if (boss_json.contains("requirements"))
 		{

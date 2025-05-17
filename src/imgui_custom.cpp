@@ -11,7 +11,7 @@ void CustomSelectable(std::function<void()> on_click, std::string label, bool se
 		on_click();
 	}
 
-    ImTextureID image = nullptr;
+	ImTextureID image = nullptr;
 	if (tex_id > 0)
 	{
 		Texture* tex_from_resource = APIDefs->Textures.GetOrCreateFromResource(std::format("EJ_{}", tex_id).c_str(), tex_id, hSelf);
