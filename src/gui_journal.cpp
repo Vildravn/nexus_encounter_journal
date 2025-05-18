@@ -286,53 +286,21 @@ void RenderContent()
 		ImGui::Text("%s", selected_boss.c_str());
 		Markdown("***");
 
-		if (boss_json.contains("requirements"))
+		for (auto &section : boss_json["sections"])
 		{
-			std::string reqs = boss_json["requirements"];
-			Markdown("Requirements");
-			Markdown(reqs);
-		}
-
-		if (boss_json.contains("overview"))
-		{
-			std::string overview = boss_json["overview"];
-			Markdown("Overview");
-			Markdown(overview);
-		}
-
-		if (boss_json.contains("tank"))
-		{
-			std::string tank = boss_json["tank"];
-			if (ImGui::CollapsingHeader("Tanking"))
+			std::string title = section["title"];
+			std::string text = section["text"];
+			if (section["folding"])
 			{
-				Markdown(tank);
+				if (ImGui::CollapsingHeader(title.c_str()))
+				{
+					Markdown(text);
+				}
 			}
-		}
-
-		if (boss_json.contains("heal"))
-		{
-			std::string heal = boss_json["heal"];
-			if (ImGui::CollapsingHeader("Healing"))
+			else
 			{
-				Markdown(heal);
-			}
-		}
-
-		if (boss_json.contains("dps"))
-		{
-			std::string dps = boss_json["dps"];
-			if (ImGui::CollapsingHeader("Damage Dealers"))
-			{
-				Markdown(dps);
-			}
-		}
-
-		if (boss_json.contains("links"))
-		{
-			std::string links = boss_json["links"];
-			if (ImGui::CollapsingHeader("Links"))
-			{
-				Markdown(links);
+				Markdown(title);
+				Markdown(text);
 			}
 		}
 	}
