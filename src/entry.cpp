@@ -45,8 +45,8 @@ extern "C" __declspec(dllexport) AddonDefinition* GetAddonDef()
 	AddonDef.Version.Minor = 0;
 	AddonDef.Version.Build = 0;
 	AddonDef.Version.Revision = 1;
-	AddonDef.Author = "Ravenheart.8935";
-	AddonDef.Description = "Cliffnotes about dungeon, strike and raid bosses";
+	AddonDef.Author = "Vildravn, Vestorsus";
+	AddonDef.Description = "Boss mechanics in a nutshell";
 	AddonDef.Load = AddonLoad;
 	AddonDef.Unload = AddonUnload;
 	AddonDef.Flags = EAddonFlags_None;
