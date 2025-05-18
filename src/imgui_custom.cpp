@@ -31,7 +31,7 @@ void CustomSelectable(std::function<void()> on_click, std::string label, bool se
 	ImGui::Text("%s", label.c_str());
 	if (!subtitle.empty())
 	{
-		float indent = image ? 48.0f : 8.0f;
+		float indent = image ? 42.0f : 5.0f;
 		ImGui::SetCursorPosY(pos_y + 24.0f - (ImGui::GetTextLineHeight() / 2));
 		ImGui::Indent(indent);
 		ImGui::TextDisabled("%s", subtitle.c_str());
