@@ -288,19 +288,24 @@ void RenderContent()
 
 		for (auto &section : boss_json["sections"])
 		{
-			std::string title = section["title"];
-			std::string text = section["text"];
-			if (section["folding"])
+			std::string type = "textblock";
+			std::string title;
+			std::string body;
+			if (section.contains("type")) type = section["type"];
+			if (section.contains("title")) title = section["title"];
+			if (section.contains("body")) body = section["body"];
+
+			if (type == "textblock")
+			{
+				Markdown(title);
+				Markdown(body);
+			}
+			else if (type == "collapsing")
 			{
 				if (ImGui::CollapsingHeader(title.c_str()))
 				{
-					Markdown(text);
+					Markdown(body);
 				}
-			}
-			else
-			{
-				Markdown(title);
-				Markdown(text);
 			}
 		}
 	}
