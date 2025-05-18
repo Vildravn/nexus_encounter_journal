@@ -56,5 +56,11 @@
 #define IDB_WHISPER_OF_JORMAG	        155
 #define IDB_XERA	                    156
 #define IDB_ZANE	                    157
+#define IDB_SPIRIT_WOODS				158
+#define IDB_SORTING						159
+#define IDB_GATES_OF_AHDASHIM			160
+#define IDB_GREER						161
+#define IDB_DECIMA						162
+#define IDB_URA							163
 
 #endif //RESOURCE_H

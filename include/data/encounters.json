@@ -14,7 +14,7 @@
         "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/spirit-vale/vale-guardian) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w1-spirit-vale/vale-guardian/) - detailed written guide\n  * [Mukluk](https://www.youtube.com/watch?v=qtzMDCVHlLg) - summarized video guide"
       },
       "Spirit Woods": {
-        "icon": 102,
+        "icon": 158,
         "requirements": "  * Glider Basic Mastery\n  * Mesmer Portals - useful but not required\n  * Superspeed - Useful but not requred ",
         "overview": "  * Closing Rifts - Run in and clear the arena, close 20 rifts by moving fast in the [Spectral Rifts](image: Rift), mesmer portals help and [Adrenaline Mushrooms](image: shrrom locations) can be used to refresh Mesmer Portals \n  * Escaping the Spirits - Group up on [Edge] (image: jump spot) and jump in together with gliders, Healers and BoonDPS stay and close rifts, while DPS players run ahead to destroy [Eternal Barriers](image: wall). After last jump Mesmer can place portal on first Rift and double blink towards wall to skip second Rift while the rest of the group stays on the first one.\n  * Standing on Pressure Plates - have 5 players step on 5 [Pressure plates](image: SC pic) at the same time to open the final gate. ",
         "heal": "  * During second mini game stay behind on Rifts with BoonDPS's. Have movements speed boons to move faster towards next rift. ",
@@ -219,7 +219,7 @@
         "links": "  * [Snowcrows](https://snowcrows.com/guides/raids/mythwright-gambit/conjured-amalgamate ) - detailed written guide\n  * [Hardstuck](https://hardstuck.gg/gw2/guides/w6-mythwright-gambit/conjured-amalgamate/) - detailed written guide\n  * [Mukluk](https://youtu.be/B7VQAZuV-6o) - summarized video guide "
       },
       "Sorting and Appraisal": {
-        "icon": 102,
+        "icon": 159,
         "requirements": "",
         "overview": "",
         "tank": "",
@@ -253,7 +253,7 @@
     "type": "raid",
     "bosses": {
       "Gates of Ahdashim": {
-        "icon": 102,
+        "icon": 160,
         "requirements": "",
         "overview": "",
         "tank": "",
@@ -296,7 +296,7 @@
     "type": "raid",
     "bosses": {
       "Greer, the Blightbringer": {
-        "icon": 102,
+        "icon": 161,
         "requirements": "",
         "overview": "",
         "tank": "",
@@ -305,7 +305,7 @@
         "links": "  * [Mukluk](https://youtu.be/A6FJfTURwsw) - summarized video guide "
       },
       "Decima, the Stormsinger": {
-        "icon": 102,
+        "icon": 162,
         "requirements": "",
         "overview": "",
         "tank": "",
@@ -314,7 +314,7 @@
         "links": "  * [Hardstuck](https://hardstuck.gg/gw2/guides/w8-mount-balrior/decima-the-stormsinger/) - detailed written guide\n  * [Mukluk](https://youtu.be/bkpR8ftEojY) - summarized video guide "
       },
       "Ura, the Steamshrieker": {
-        "icon": 102,
+        "icon": 163,
         "requirements": "",
         "overview": "",
         "tank": "",
