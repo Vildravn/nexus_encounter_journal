@@ -1,5 +1,5 @@
 .cache
 /build
 /out
-/cmake-build-debug
+/cmake-build-*
 /.idea
