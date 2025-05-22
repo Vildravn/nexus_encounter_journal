@@ -129,8 +129,28 @@ void RenderJournal()
 	if (!ShowJournalWindow)
 	{
 		auto map_id_str = std::to_string(MumbleData->Context.MapID);
-		if (j_encounters.contains(map_id_str)) selected_zone = map_id_str;
-		else selected_zone.clear();
+		if (j_encounters.contains(map_id_str) && selected_zone != map_id_str)
+		{
+			ClearSelections();
+			selected_zone = map_id_str;
+			auto j_zone = j_encounters[selected_zone];
+			std::string zone_type = j_zone["type"];
+
+			if (zone_type == "raid")
+			{
+				active_screen = JournalSubmenu::Raids;
+			}
+			else if (zone_type == "strike")
+			{
+				selected_strike = j_zone["subtype"];
+				for (auto& boss : j_zone["bosses"].items())
+				{
+					selected_boss = boss.key();
+					break;
+				}
+				active_screen = JournalSubmenu::Strikes;
+			}
+		}
 
 		return;
 	}
@@ -208,11 +228,11 @@ void RenderStrikeSubmenu()
 	if (selected_strike.empty())
 	{
 		CustomSelectableBack([]() { active_screen = JournalSubmenu::Main; }, "Back to Menu");
-		CustomSelectable([]() { selected_strike = "s1_strike"; }, "Living World Season 1");
-		CustomSelectable([]() { selected_strike = "wintersday_strike"; }, "Wintersday");
-		CustomSelectable([]() { selected_strike = "ibs_strike"; }, "Icebrood Saga");
-		CustomSelectable([]() { selected_strike = "eod_strike"; }, "End of Dragons");
-		CustomSelectable([]() { selected_strike = "soto_strike"; }, "Secrets of the Obscure");
+		CustomSelectable([]() { selected_strike = "s1"; }, "Living World Season 1");
+		CustomSelectable([]() { selected_strike = "wintersday"; }, "Wintersday");
+		CustomSelectable([]() { selected_strike = "ibs"; }, "Icebrood Saga");
+		CustomSelectable([]() { selected_strike = "eod"; }, "End of Dragons");
+		CustomSelectable([]() { selected_strike = "soto"; }, "Secrets of the Obscure");
 	}
 	else
 	{
@@ -257,7 +277,7 @@ void RenderJournalBossMenu()
 	}
 }
 
-void RenderJournalStrikeBossMenu(std::string type)
+void RenderJournalStrikeBossMenu(std::string subtype)
 {
 	CustomSelectableBack(ClearSelections, "Back to Strike Missions");
 
@@ -271,7 +291,8 @@ void RenderJournalStrikeBossMenu(std::string type)
 		int icon = 0;
 		if (j->contains("subtitle")) subtitle = j->at("subtitle");
 		if (j->contains(icon_ptr)) icon = j->at(icon_ptr);
-		if (j->at("type") != type) continue;
+		if (j->at("type") != "strike") continue;
+		if (j->at("subtype") != subtype) continue;
 		CustomSelectable([zone_id, boss_name]() { selected_zone = zone_id; selected_boss = boss_name; }, boss_name, selected_boss == boss_name, subtitle, icon);
 	}
 }

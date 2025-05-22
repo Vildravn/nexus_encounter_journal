@@ -17,7 +17,7 @@ extern void ClearSelections();
 extern void RenderJournal();
 extern void RenderJournalZoneMenu(std::string type);
 extern void RenderJournalBossMenu();
-extern void RenderJournalStrikeBossMenu(std::string type);
+extern void RenderJournalStrikeBossMenu(std::string subtype);
 extern void RenderMainSubmenu();
 extern void RenderRaidSubmenu();
 extern void RenderStrikeSubmenu();

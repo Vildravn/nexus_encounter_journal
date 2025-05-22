@@ -1043,7 +1043,8 @@
   "1485": {
     "name": "Watchknight Triumvirate",
     "subtitle": "Old Lion's Court",
-    "type": "s1_strike",
+    "type": "strike",
+    "subtype": "s1",
     "bosses": {
       "Watchknight Triumvirate": {
         "icon": 154,
@@ -1083,7 +1084,8 @@
   "1306": {
     "name": "Freezie",
     "subtitle": "Secret Lair of the Snowmen",
-    "type": "wintersday_strike",
+    "type": "strike",
+    "subtype": "wintersday",
     "bosses": {
       "Freezie": {
         "icon": 127,
@@ -1123,7 +1125,8 @@
   "1332": {
     "name": "Icebrood Construct",
     "subtitle": "Shiverpeaks Pass",
-    "type": "ibs_strike",
+    "type": "strike",
+    "subtype": "ibs",
     "bosses": {
       "Icebrood Construct": {
         "icon": 131,
@@ -1162,7 +1165,8 @@
   },
   "1340": {
     "name": "Voice and Claw of the Fallen",
-    "type": "ibs_strike",
+    "type": "strike",
+    "subtype": "ibs",
     "bosses": {
       "Voice and Claw of the Fallen": {
         "icon": 134,
@@ -1201,7 +1205,8 @@
   },
   "1341": {
     "name": "Fraenir of Jormag",
-    "type": "ibs_strike",
+    "type": "strike",
+    "subtype": "ibs",
     "bosses": {
       "Fraenir of Jormag": {
         "icon": 126,
@@ -1240,7 +1245,8 @@
   },
   "1339": {
     "name": "Boneskinner",
-    "type": "ibs_strike",
+    "type": "strike",
+    "subtype": "ibs",
     "bosses": {
       "Boneskinner": {
         "icon": 108,
@@ -1279,7 +1285,8 @@
   },
   "1357": {
     "name": "Whisper of Jormag",
-    "type": "ibs_strike",
+    "type": "strike",
+    "subtype": "ibs",
     "bosses": {
       "Whisper of Jormag": {
         "icon": 155,
@@ -1319,7 +1326,8 @@
   "1432": {
     "name": "Captain Mai Trin",
     "subtitle": "Aetherblade Hideout",
-    "type": "eod_strike",
+    "type": "strike",
+    "subtype": "eod",
     "bosses": {
       "Captain Mai Trin": {
         "icon": 111,
@@ -1359,7 +1367,8 @@
   "1433": {
     "name": "Ankka",
     "subtitle": "Xunlai Jade Junkyard",
-    "type": "eod_strike",
+    "type": "strike",
+    "subtype": "eod",
     "bosses": {
       "Ankka": {
         "icon": 104,
@@ -1399,7 +1408,8 @@
   "1451": {
     "name": "Minister Li",
     "subtitle": "Kaineng Overlook",
-    "type": "eod_strike",
+    "type": "strike",
+    "subtype": "eod",
     "bosses": {
       "Minister Li": {
         "icon": 137,
@@ -1439,7 +1449,8 @@
   "1437": {
     "name": "Dragonvoid",
     "subtitle": "Harvest Temple",
-    "type": "eod_strike",
+    "type": "strike",
+    "subtype": "eod",
     "bosses": {
       "Dragonvoid": {
         "icon": 129,
@@ -1479,7 +1490,8 @@
   "1515": {
     "name": "Dagda, Wizard of the Celestial",
     "subtitle": "Cosmic Observatory",
-    "type": "soto_strike",
+    "type": "strike",
+    "subtype": "soto",
     "bosses": {
       "Dagda, Wizard of the Celestial": {
         "icon": 115,
@@ -1519,7 +1531,8 @@
   "1520": {
     "name": "Cerus",
     "subtitle": "Temple of Febe",
-    "type": "soto_strike",
+    "type": "strike",
+    "subtype": "soto",
     "bosses": {
       "Cerus": {
         "icon": 113,
